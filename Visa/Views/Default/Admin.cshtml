@@ -1,0 +1,410 @@
+﻿@using System.Diagnostics
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+
+    <div class="navbar navbar-left navbar-inverse navbar-fixed-top nav-pills" style="z-index: 1000">
+        <div class="col-md-12">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">
+                    <span class="glyphicon glyphicon-home"></span>
+                    Visa
+                </a>
+
+            </div>
+
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Khách Hàng<span class="material-icons md-em">account_balance</span></a></li>
+
+                    <li class="dropdown">
+                        <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Hôm Nay <span class="material-icons md-em active">today</span>
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="#Account">Account </a></li>
+                            <li><a href="#Nationality">Nationality</a></li>
+                            <li><a href="#arri">Arrival Port</a></li>
+                            <li><a href="javascript:void(0)">Price</a></li>
+                            <li><a href="javascript:void(0)">Location</a></li>
+                            <li><a href="javascript:void(0)">Gender</a></li>
+
+                            <li><a href="javascript:void(0)">Rom type</a></li>
+                            <li><a href="javascript:void(0)">Number of visa </a></li>
+                            <li><a href="javascript:void(0)">Purpose of visit</a></li>
+                            <li><a href="javascript:void(0)">Type of visa</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Tài Chính<i class="material-icons md-em">monetization_on</i>
+                        </a>
+                        <ul class="dropdown-menu list-group" style="padding-left: 5px; padding-right: 5px">
+                            <li><a href="#">Chi Phí</a></li>
+                            <li><a href="javascript:void(0)">Doanh Thu</a></li>
+                            <li><a href="javascript:void(0)">Nhật Ký</a></li>
+                            <li><a href="/Default/QuanLyBangGia">Dịch Vụ</a></li>
+                            <li><a href="#">Giá Phòng</a></li>
+                            <li><a href="#">Giá Phòng</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control col-md-12" placeholder="Search" />
+                    </div>
+                </form>
+                <div class="container" style="height: 1px"></div>
+            </div>
+        </div>
+    </div>
+<div class="container-fluid" style="margin-top: 60px">
+  
+    <div class="row">
+        <div class="col-md-4" id="Nationality">
+
+
+            @{
+                var dsqt = ViewBag.quoctich as List<Nationality>;
+                if (dsqt != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="dsqtcount">Toatl Nationality:&nbsp; @dsqt.Count</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label" for="tbn-Nationality"> Nationality</label>
+                                <input list="listItem" class="form-control" id="tbn-Nationality" name="nationality[]" style="height: 35px;" title="Select" />
+                                <datalist id="listItem">
+                                    <option disabled="" selected="">Select</option>
+                                    @{
+                                        foreach (var f in dsqt)
+                                        {
+
+                                            <option>@f.Name</option>
+                                        }
+                                    }
+                                </datalist>
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="values">Value</label>
+                                <input class="form-control" id="values" type="text">
+                            </div>
+
+                            <div class="row">
+                                <button class="btn btn-inverse text-center" onclick=" AddNationality() ">Add</button>
+                                <button class="btn btn-inverse text-center" onclick=" DeleteAddNationality() ">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                                        }
+            }
+
+        </div>
+        <div class="col-md-4" id="arri">
+
+
+            @{
+                var sanbay = ViewBag.sanbay as List<TArrivalPort>;
+                if (sanbay != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="dsqtcountsb">Total Arriva lPort:&nbsp; @sanbay.Count</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label" for="tbn-Nationality"> Arrival Port</label>
+                                <input list="listItem1" class="form-control" id="tbn-sanbay" name="sanbay[]" style="height: 35px;" title="Select"/>
+                                <datalist id="listItem1">
+                                    <option disabled="" selected="">Select</option>
+                                    @{
+                                        foreach (var f in sanbay)
+                                        {
+
+                                            <option>@f.name</option>
+                                        }
+                                    }
+                                </datalist>
+                            </div>
+                            @*<div class="form-group label-floating">
+                                <label class="control-label" for="valuessanbay">Value</label>
+                                <input class="form-control" id="valuessanbay" type="text">
+                            </div>*@
+
+                            <div class="row">
+                                <button class="btn btn-inverse text-center" onclick="AddSanbay() ">Add</button>
+                                <button class="btn btn-inverse text-center" onclick="DeleteSanbay() ">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            }
+
+        </div>
+        <div class="col-md-4" id="sex">
+
+
+            @{
+                var sex = ViewBag.sex as List<Gender>;
+                if (sex != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Total Gender:&nbsp; @sex.Count</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label" for="tbn-Nationality"> Gender</label>
+                                <input list="listItem2s" class="form-control" id="tbn-sex" name="sex[]" style="height: 35px;" title="Select"/>
+                                <datalist id="listItem2s">
+                                    <option disabled="" selected="">Select</option>
+                                    @{
+                                        foreach (var f in sex)
+                                        {
+
+                                            <option>@f.Name</option>
+                                        }
+                                    }
+                                </datalist>
+                            </div>
+                            @*<div class="form-group label-floating">
+                                <label class="control-label" for="valuessanbay">Value</label>
+                                <input class="form-control" id="valuessanbay" type="text">
+                            </div>*@
+
+                            <div class="row">
+                                <button class="btn btn-inverse text-center" onclick=" AddSex() ">Add</button>
+                                <button class="btn btn-inverse text-center" onclick=" DeleteSex() ">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            }
+
+        </div>
+        <div class="col-md-4" id="GiaPhong">
+
+            @{
+                var giaphong = ViewBag.giaphong as List<TGiaPhong>;
+                if (giaphong != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Total Price :&nbsp; @giaphong.Count</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label" for="tbn-Nationality"> Price</label>
+                                <input list="listItem3s" class="form-control" onblur="OnChangePrice(this)" id="tbn-giaphong" name="sex[]" style="height: 35px;" title="Select"/>
+                                <datalist id="listItem3s">
+                                    <option disabled="" selected="">Select</option>
+                                    @{
+                                        foreach (var f in giaphong)
+                                        {
+                                            if (@f.den == 0 || f.den == null)
+                                            {
+                                    <option>@f.ten &nbsp;@f.tu@f.donvitien </option>}
+                                            else
+                                            {
+                                                <option>@f.ten &nbsp;@f.tu@f.donvitien &rarr;@f.den@f.donvitien</option>
+                                            }
+
+                                        }
+                                    }
+                                </datalist>
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="from">From</label>
+                                <input class="form-control" id="from" type="number">
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="to">To</label>
+                                <input class="form-control" id="to" type="number">
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="dv">Don vi</label>
+                                <input class="form-control" id="dv" type="text">
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-inverse text-center" onclick=" AddGiaPhong() ">Add</button>
+                                <button class="btn btn-inverse text-center" onclick=" DeleteGiaPhong() ">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            }
+
+
+        </div>
+    <div class="col-md-4" id="DiaDiem">
+
+        @{
+            var dd = ViewBag.diadiem as List<TLocaltion>;
+            if (dd != null)
+            {
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Total Localtion :&nbsp; @dd.Count</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="control-label" for="tbn-diadiem"> Localtion</label>
+                            <input list="listItem4s" class="form-control" id="tbn-diadiem" name="dd[]" style="height: 35px;" title="Select"/>
+                            <datalist id="listItem4s">
+                                <option disabled="" selected="">Select</option>
+                                @{
+                                    foreach (var f in dd)
+                                    {
+                                        <option>@f.name</option>
+
+                                    }
+                                }
+                            </datalist>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn btn-inverse text-center" onclick=" AddDiadiem() ">Add</button>
+                            <button class="btn btn-inverse text-center" onclick=" DeleteDiadiem() ">Delete</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+
+    </div>
+  
+        <div class="col-md-4" id="romtype">
+
+            @{
+                var rom = ViewBag.rom as List<TRomtype>;
+                if (rom != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Total Rom :&nbsp; @rom.Count</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label" for="tbn-rom"> Rom type</label>
+                                <input list="listItem5s" class="form-control" id="tbn-rom" name="rom[]" style="height: 35px;" title="Select" />
+                                <datalist id="listItem5s">
+                                    <option disabled="" selected="">Select</option>
+                                    @{
+                                        foreach (var f in rom)
+                                        {
+                                            <option>@f.tenphong</option>
+
+                                        }
+                                    }
+                                </datalist>
+                            </div>
+
+                            <div class="row">
+                                <button class="btn btn-inverse text-center" onclick="AddRom() ">Add</button>
+                                <button class="btn btn-inverse text-center" onclick="DeleteRom() ">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                                        }
+            }
+
+
+        </div>
+        <div class="col-md-4" id="Numberofapplicant">
+
+            @{
+                var numberofvisa = ViewBag.numberofvisa as List<TNumberofapplicant>;
+                if (numberofvisa != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Total Number Of Visa :&nbsp; @numberofvisa.Count</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label" for="tbn-rom"> Number Of Visa</label>
+                                <input list="listItem7s" onblur="OnselectNumberOfVisa()" class="form-control" id="tbn-numberofvisa" name="numberofvisa[]" style="height: 35px;" title="Select" />
+                                <datalist id="listItem7s">
+                                    <option disabled="" selected="">Select</option>
+                                    @{
+                                        foreach (var f in numberofvisa)
+                                        {
+                                            <option>@f.valuenumber &nbsp;@f.valuetext</option>
+
+                                        }
+                                    }
+                                </datalist>
+                            </div>
+                            <div class="row">
+                                <div class="form-group label-floating">
+                                    <label class="control-label" for="valueText">Value Text</label>
+                                    <input class="form-control" id="valueText" type="text">
+                                </div>
+                                <div class="form-group label-floating">
+                                    <label class="control-label" for="valueNumber">Value Number</label>
+                                    <input class="form-control" id="valueNumber" type="text">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-inverse text-center" onclick="Addnumberofvisa()">Add</button>
+                                <button class="btn btn-inverse text-center" onclick="DeleteNumberOfVisa()">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                                        }
+            }
+
+
+        </div>
+        <div class="col-md-4" style="height: 400px; background: wheat"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+   
+
+</script>
+<script>
+    $(document).ready(function () {
+        $('#button1').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: @Url.Action("Default", "PostNationalities"),
+                datatype: "html",
+                success: function () { 
+                    //$('#rooms').html(???);
+                }
+            });
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,523 @@
+﻿@model Visa.ViSaPart1
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+
+</head>
+<body>
+
+@using (Html.BeginForm("Visa11", "Default"))
+{
+    <div class="container-fluid" style="background: white">
+        <div>
+          
+            <ul class="nav nav-pills">
+
+                <li><a data-toggle="pill" href="#menu1">VISAS</a></li>
+                <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
+                <li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
+            </ul>
+           
+            <div class="tab-content">
+
+                <div id="menu1" class="tab-pane fade in active">
+                    <div class="togglebutton" style="background:honeydew; width: 200px;border-radius: 5px">
+                        <label style="padding-left: 5px">
+
+                            <input type="checkbox" checked="" onclick="isCheckbt(this)">
+                            <span id="sptoggle" style="color: blue">TOURIST</span>
+                        </label>
+                    </div>
+                    <div id="chij" class="table-responsive">
+
+                        <table class="table-hover table table-bordered container-fluid " id="tableshowPrice" onclick="SukienClicj(this)">
+                            <thead style="background: red; color: whitesmoke">
+
+                            <tr onclick="ChangeVisitHeading()" style="cursor: pointer">
+                                <td  class="text-center" colspan="13">
+                                    <h2 id="tTOURIST" class="center-element">TOURIST VISA</h2>
+                                </td>
+                            </tr>
+                            <tr class="center-text">
+                                <td rowspan="3" colspan="3">
+                                    <div class="center-element">
+                                        <h4><span> SERVICE FEE</span></h4>
+                                    </div>
+                                </td>
+                                <td rowspan="3" colspan="8" class="text-center">
+                                    <div class="center-element">
+                                        <h4><span>NORMAL CASE</span></h4>
+                                    </div>
+                                </td>
+                                <td rowspan="3" colspan="2" class="text-center">
+                                    <div class="center-element">
+                                        <h4><span>STAMPING FEE</span></h4>
+                                    </div>
+                                </td>
+
+                            </tr>
+
+
+                            </thead>
+                            <tbody>
+                            <tr style="background: blue; color: whitesmoke; cursor: pointer" data-toggle="modal" data-target="#modal_heading" data-placement="left" title="" data-original-title="Tooltip on left">
+                                <td colspan="3" id="td0">Type Of Visa</td>
+                                <td colspan="2" id="td1">Type Of Visa</td>
+                                <td colspan="2" id="td2">Type Of Visa</td>
+                                <td colspan="2" id="td3">Type Of Visa</td>
+                                <td colspan="2" id="td4">Type Of Visa</td>
+                                <td colspan="2" id="td5">Stamping Fee</td>
+                                <td id="idtd0" class="hide"></td>
+                            </tr>
+                            @{
+                                var g = ViewBag.tablePrice1 as List<ViSaPart1>;
+                               
+                                if (g != null)
+                                {
+                                    try
+                                    {
+                                        foreach (var w in g.FindAll(j => j.visit.Equals("TOURIST VISA")))
+                                        {
+                                            <tr class="tbTour" style="cursor: pointer" data-toggle="modal" data-target="#myModal">
+                                                <td colspan="3" class="td01">@w.typeOfVisa</td>
+                                                <td colspan="2" class="td11">@w.pax1&nbsp;$</td>
+                                                <td colspan="2" class="td21">@w.pax2&nbsp;$</td>
+                                                <td colspan="2" class="td31">@w.pax3&nbsp;$</td>
+                                                <td colspan="2" class="td41">@w.pax4&nbsp;$</td>
+                                                <td colspan="2" class="td51">@w.valueP &nbsp;$</td>
+                                                <td colspan="2" class="hidden tdid">@w.id</td>
+                                            </tr>
+                                        }
+                                        foreach (var w in g.FindAll(j => j.visit.Contains("BUSINESS")))
+                                        {
+                                            <tr class="tbBis" style="cursor: pointer" data-toggle="modal" data-target="#myModal">
+                                                <td colspan="3" class="td01">@w.typeOfVisa</td>
+                                                <td colspan="2" class="td11">@w.pax1&nbsp;$</td>
+                                                <td colspan="2" class="td21">@w.pax2&nbsp;$</td>
+                                                <td colspan="2" class="td31">@w.pax3&nbsp;$</td>
+                                                <td colspan="2" class="td41">@w.pax4&nbsp;$</td>
+                                                <td colspan="2" class="td51">@w.valueP &nbsp;$</td>
+                                                <td colspan="2" class="hidden tdid">@w.id</td>
+                                            </tr>
+                                        }
+
+                                    }
+                                    catch (Exception)
+                                    {
+                                        <tr>Không Có Dữ Liệu</tr>
+
+                                    }
+
+                                }
+
+                            }
+
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+
+
+                        </table>
+
+                    </div>
+
+
+                    <div id="myModal" class="modal fade modal-lg " role="dialog">
+                        <div class="modal-dialog">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title modalH text-center alert-inverse">Modal Header</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="col-md-12 center-element">
+                                        <div class="row">
+                                            <div class="col-md-12" id="tb-visa1-typevisaas" >
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label" for="tb-visa1-typevisa"> Purpose of visit</label>
+                                                    <div>
+                                                        @{
+                                                            var list1 = ViewBag.typeOfVisa1 as List<string>;
+                                                        }
+                                                        @Html.DropDownListFor(model => model.typeOfVisa, list1.Select(x => new SelectListItem {Text = x, Value = x}), new {@class = "form-control col-md-10", @id = "tb-visa1-typevisa", @style = "height: 35px", onchange = "LoadPrice()"})
+                                                        @Html.ValidationMessageFor(model => model.typeOfVisa, "", new {@class = "text-danger"})
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 form-group label-floating">
+                                                <label  class="control-label vl1"  >Value pax 1</label>
+                                                @Html.EditorFor(model => model.pax1, null, new
+                                                {
+                                                    htmlAttributes = new {@class = "form-control col-md-10", id = "hhpax1", @style = "height: 35px"}
+                                                })
+                                            </div>
+                                            <div class="col-md-12 form-group label-floating">
+                                                <label class="control-label vl2">Value pax 1</label>
+                                                @Html.EditorFor(model => model.pax2, null, new
+                                                {
+                                                    htmlAttributes = new {@class = "form-control col-md-10", id = "hhpax2", @style = "height: 35px"}
+                                                })
+                                            </div>
+                                            <div class="col-md-12 form-group label-floating">
+                                                <label class="control-label vl3">Value pax 1</label>
+                                                @Html.EditorFor(model => model.pax3, null, new
+                                           {
+                                               htmlAttributes = new { @class = "form-control col-md-10", id = "hhpax3", @style = "height: 35px" }
+                                           })
+                                            </div>
+
+                                            <div class="col-md-12 form-group label-floating">
+                                                <label class="control-label vl4">Value pax 1</label>
+                                                @Html.EditorFor(model => model.pax4, null, new
+                                                {
+                                                    htmlAttributes = new {@class = "form-control col-md-10", id = "hhpax4", @style = "height: 35px"}
+                                                })
+                                            </div>
+                                            <div class="col-md-12 form-group label-floating">
+                                                <label class="control-label vl5">STAMPING FEE</label>
+                                                @Html.EditorFor(model => model.valueP, null, new
+                                           {
+                                               htmlAttributes = new { @class = "form-control col-md-10", id = "hhpax5", @style = "height: 35px" }
+                                           })
+                                            </div>
+                                            <p class="idpax5"></p>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                                <div class="modal-footer center-element">
+                                    <button type="button" class="btn btn-inverse btn-fab btn-fab-mini btAdd" data-dismiss="modal" onclick="add()"><i class="material-icons">add</i></button>
+                                    <button type="button" class="btn btn-info btn-fab btn-fab-mini btUpdate" data-dismiss="modal" onclick="UpdateVisa11()"><i class="material-icons">cached</i></button>
+                                    <button type="button" class="btn btn-danger btn-fab btn-fab-mini btDelete" data-dismiss="modal" onclick="DeleteItem()"><i class="material-icons">delete_forever</i></button>
+                                </div>
+                            </div>
+
+                            <!-- Modal content-->
+
+
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info btn-fab btn-fab-mini" data-toggle="modal" data-target="#myModal"><i class="material-icons" onclick="HideShow()">add</i></button>
+                    @*<button type="button" class="btn btn-danger btn-fab" data-toggle="modal" data-target="#modal_heading"><span class="glyphicon glyphicon-edit"></span></button>*@
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">URGENT CASE</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-groupl floating-label">
+                               
+                                <select id="f" class="form-control" style="height: 35px">
+                                    @{
+                                        var h = ViewBag.processtime as List<Processingtime>;
+                                        if (h != null)
+                                        {
+                                            foreach (var w in h.Select(j=>j.name).Distinct())
+                                            {
+                                                <option value=@w>@w</option>
+                                            }
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+                            <input class="form-control" placeholder="Value"/>
+                            <div class="modal-footer center-element">
+                                <button type="button" class="btn btn-inverse btn-fab btn-fab-mini btAdd" data-dismiss="modal" onclick="add()"><i class="material-icons">add</i></button>
+                                <button type="button" class="btn btn-info btn-fab btn-fab-mini btUpdate" data-dismiss="modal" onclick="UpdateVisa11()"><i class="material-icons">cached</i></button>
+                                <button type="button" class="btn btn-warning btn-fab btn-fab-mini btDelete" data-dismiss="modal" onclick="DeleteItem()"><i class="material-icons">delete_forever</i></button>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                <div id="menu2" class="tab-pane fade">
+                    <h3>Menu 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                    <h3>Menu 3</h3>
+                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal_heading" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Header Visa</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12 form-group label-floating">
+                                <label  class="control-label">Type Of Visa</label>
+                                <input class="form-control" id="paxPax0" type="text"/>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control col-md-12" id="paxPax1" type="text" title="change Pax 1 " />
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control col-md-12" id="paxPax2" type="text" title="change Pax 2 "  />
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control col-md-12" id="paxPax3" type="text" title="change Pax 3 "/>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control col-md-12" id="paxPax4" type="text" title="change Pax 4 "  />
+                            </div>
+                            <span id="idpaxPax0"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="
+ThayDoiPax()">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+      
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </div>
+                                                                }
+    <div id="result"></div>
+
+</body>
+</html>
+<script>
+    var t1 = "";
+
+    function onhpax1(a) {
+        $("#p1ax").text($(a).val());
+    }
+
+    function onhpax2(a) {
+        $("#p2ax").text($(a).val());
+    }
+
+    function onhpax3(a) {
+        $("#p3ax").text($(a).val());
+    }
+
+    function onhpax4(a) {
+        $("#p4ax").text($(a).val());
+    }
+
+    function saveHeading() {
+        var t1 = $("#p1ax").text();
+        var t2 = $("#p2ax").text();
+        var t3 = $("#p3ax").text();
+        var t4 = $("#p4ax").text();
+        var t = $("#ptype").text();
+        var url = '@Url.Action("SaveHeadingVisa11", "Default")';
+        $.ajax({
+            url: url,
+            data: { p1ax: t1, p2ax: t2, p3ax: t3, p4ax: t4, p: t },
+            datatype: "JSON",
+            type: "POST",
+            success: function(data) {
+                //alert(data);
+            }
+        });
+       
+    }
+   
+    function LoadPrice() {
+      
+        var t = $("#tb-visa1-typevisa").val();
+        var url = '@Url.Action("LoadPriceVisaNormal", "Default")';
+        $.ajax({
+            url: url,
+            data:{typeofVisa:t},
+            datatype: "JSON",
+            type: "POST",
+            success: function (data) {
+                if (data != null) {
+                    $("#hhpax1").val(data.pax1);
+                    $("#hhpax2").val(data.pax2);
+                    $("#hhpax3").val(data.pax3);
+                    $("#hhpax4").val(data.pax4);
+                    $("#hhpax5").val(data.valueP);
+                }
+                
+                //$("#td0").text(data.name);
+                //$("#td1").text(data.pax1);
+                //$("#td2").text(data.pax2);
+                //$("#td3").text(data.pax3);
+                //$("#td4").text(data.pax4);
+            }
+        });
+    }
+
+    function DeleteItem() {
+        var id = $(".idpax5").val();
+      
+        var url = '@Url.Action("DeletePriceVisa1", "Default")';
+        $.ajax({
+            url: url,
+            data: { id:parseInt(id)},
+            datatype: "JSON",
+            type: "POST",
+            success: function (data) {
+               
+                window.location = "/Default/QuanLyBangGia";
+            }
+        });
+    }
+    function loadHeading() {
+        var url = '@Url.Action("LoadHeading", "Default")';
+        $.ajax({
+            url: url,
+            datatype: "JSON",
+            type: "POST",
+            success: function (data) {
+              
+                $('.vl1').text(data.pax1);
+                $('.vl2').text(data.pax2);
+                $('.vl3').text(data.pax3);
+                $('.vl4').text(data.pax4);
+                $('.vl5').text(data.valueP); 
+                $("#ptype").text(data.name);
+                $("#p1ax").text(data.pax1);
+                $("#p2ax").text(data.pax2);
+                $("#p3ax").text(data.pax3);
+                $("#p4ax").text(data.pax4);
+                $("#td0").text(data.name);
+                $("#td1").text(data.pax1);
+                $("#td2").text(data.pax2);
+                $("#td3").text(data.pax3);
+                $("#td4").text(data.pax4);
+                $("#idtd0").text(data.id);
+            }
+        });
+        
+    }
+    
+    var tr = "";
+    var trid = "";
+    var tr1 ="";
+    var tr2="";
+    var tr3="";
+    var tr4="";
+  
+  
+</script>
+<script >
+    $(document)
+        .ready(function() {
+            document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+            $(".tbBis").hide();
+            loadHeading();
+            SukienClicj();
+        })
+</script>
+<script>
+    function ThayDoiPax() {
+
+        var t1 = $("#paxPax1").val();
+        var t2 = $("#paxPax2").val();
+        var t3 = $("#paxPax3").val();
+        var t4 = $("#paxPax4").val();
+        var t = $("#paxPax0").val();
+        var id = parseInt($("#idtd0").text());
+        var url = '@Url.Action("SaveHeadingVisa11", "Default")';
+        $.ajax({
+            url: url,
+            data: {
+                p1ax: t1,
+                p2ax: t2,
+                p3ax: t3,
+                p4ax: t4,
+                p: t,
+                id: id
+               
+            },
+            datatype: "JSON",
+            type: "POST",
+            success: function(data) {
+                //alert(data);
+                window.location = "/Default/QuanLyBangGia";
+            }
+        });
+    }
+</script>
+<script>
+    
+</script>
+<script>
+    var visit = "";
+    function isCheckbt(a) {
+        if ($(a).is(':checked')) {
+            $("#tTOURIST").text("TOURIST VISA");
+            $(".modalH").text("TOURIST VISA");
+            visit = "TOURIST".toLowerCase();
+            $("#sptoggle").text("TOURIST");
+        } else {
+            visit = "BUSINESS".toLowerCase();
+            $(".modalH").text("BUSINESS VISA");
+            $("#sptoggle").text("BUSINESS");
+            $("#tTOURIST").text("BUSINESS VISA");
+        }
+
+    }
+</script>
+<script>
+    function kttoggle() {
+        var kt = "";
+        if ($("#tTOURIST").text() === "BUSINESS VISA") {
+            kt = "BUSINESS".toLowerCase();
+        } else {
+            kt = "TOURIST".toLowerCase();
+        }
+    }
+</script>
+<script>
+    function ChangeVisitHeading() {
+        var tt = $("#tTOURIST").text();
+        switch (tt) {
+        case "BUSINESS VISA":
+            {
+                localStorage.setItem("lastname", "TOURIST VISA");
+                $(".tbTour").show("2000");
+                $(".tbBis").hide();
+                $("#tTOURIST").text("TOURIST VISA");
+                $(".modalH").text("TOURIST VISA");
+            }
+            break;
+        case "TOURIST VISA":
+            {
+                $(".tbBis").show("2000");
+                $(".tbTour").hide();
+                localStorage.setItem("lastname", "BUSINESS VISA");
+                $("#tTOURIST").text("BUSINESS VISA"); $(".modalH").text("BUSINESS VISA");
+            }
+            break;
+        default:
+        }
+        onloadf();
+    }
+</script>
+<script>
+    function onloadf() {
+        document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+    }
+// Check browser support
+   
+</script>

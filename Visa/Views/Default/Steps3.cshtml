@@ -1,0 +1,489 @@
+﻿
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    
+    <title>.</title>
+   
+</head>
+@{
+   
+    var chongoi = ViewBag.dschongoi as List<string>;
+    var sanbay= ViewBag.dssabay as List<string>;
+}
+<body >
+  
+@*Please make sure and confirm [halo] is your full name as shown in your passport. An incomplete full name in the visa approval letter will be considered invalid.
+    Yes. It is the full name shown in my passport
+    No. I need to make some changes.*@
+<div  style="padding-left: 5px;padding-right: 5px" >
+    <h5 class="center-text text-warning">Please review your application details below before starting visa processing with Vietnam Immigration Department</h5>
+    <div class="row center-element">
+        <div class="col-md-12 col-sm-12  col-xs-12 hidden">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <p>1.Visa Options</p>
+                    <ul>
+                        <li>Visa type: 1 month single entry</li>
+                        <li>Processing: Normal (Guaranteed 2 working days)</li>
+                        <li>Arrival date: August 26, 2016</li>
+                        <li>Exit date: September 26, 2016</li>
+                        <li>Arrival Airport: Noi Bai Airport (HAN)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <p>2.Applicant Detail</p>
+                    <ul>
+                        <li><h4 class="text-info text-left">Full Name &nbsp;<span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#myEdit" style="cursor: pointer"></span></h4></li>
+                        <li>Gender: Male</li>
+                        <li>Date of birth: March 02, 1991</li>
+                        <li>Nationality: Belize</li>
+                        <li>Passport number: 041366656</li>
+                        <li>Expiry date: March 09, 2017</li>
+                    </ul>
+
+                </div>
+
+                <div class="col-md-4 center-element">
+                    <div class="center-element hidden">
+                        <img src="https://booking.vietnam-visa.com/public/images/booking/app2.png" alt="">
+                    </div>
+
+                    <div class="">
+                        <h3 class="center-element text-primary"><span>3.Service fees</span></h3>
+
+                        <h4 class="text-danger text-center"><span style="font-size: 1.1em">$21.00</span></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <!-- HTML to write -->
+            @*<a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>*@
+
+            <!-- Generated markup by the plugin -->
+            @*<div class="tooltip top" role="tooltip">
+                    <div class="tooltip-arrow"></div>
+                    <div class="tooltip-inner">
+                        Some tooltip text!
+                    </div>
+                </div>*@
+            <h4>FAST-TRACK IMMIGRATION SERVICE</h4>
+            <h5>Fast-track immigration service helps you to save time on queuing at Airport Immigration Counter. Our representative will pick you up at the airport and do all entry procedure on your behalf. Using our assistance to leave long queue behind with only <span style="color: red" id="payFats"></span><span style="color: red">&nbsp;plus</span> (stamping fee excluded).</h5>
+            <div class="row">
+                <div class="container-fluid col-md-6" style="margin-top: -30px" >
+                    <div class="row">
+                        @*<div class="col-md-6 text-left">
+                                Fast-track immigration service helps you to save time on queuing at Airport Immigration Counter. Our representative will pick you up at the airport and do all entry procedure on your behalf. Using our assistance to leave long queue behind with only $25/applicant plus (stamping fee excluded).
+
+                            </div>*@
+                        <div class="col-md-12">
+                            <div class="form-group ">
+                                <div class="col-md-12">
+                                    <div class="radio" data-toggle="collapse" data-target="#demoFlight">
+                                        <label>
+                                            <input type="radio" name="sample1" style="background: red" value="Yes, please (Recommended) " onclick="ThanhToanFastTrack();">
+                                            Yes, please (Recommended)
+                                        </label>
+                                    </div>
+                                    <div class="col-md-12 collapse" id="demoFlight">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">Flight booking</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row container-fluid" style="margin-top: -10px">
+                                                    <div class="form-group col-md-8 col-xs-8" style="margin-top: -15px">
+                                                        <label class="control-label " for="slPriceHotel">Choise Fast Track</label>
+                                                        <select class="form-control" id="fastTrack" style="height: 35px" onchange="ThanhToanFastTrack()"></select>
+                                                    </div>
+
+                                                    <div class="col-md-4 col-xs-4 center-element" id="giaTienStack" style="color: red;font-size: 110%">
+                                                      
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="container col-md-6">
+                                                                <div class="radio">
+                                                                    <label class="container">
+                                                                        <input type="radio" name="sample2" value="Not yet" checked="checked" onclick="EditNotyes(this)">
+                                                                        Not yet
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="container col-md-6">
+                                                                <div class="radio ">
+                                                                    <label class="container">
+                                                                        <input type="radio" name="sample2" value="Booked" onclick="ShowsChecked(this)">
+                                                                        Booked
+                                                                    </label>
+                                                                </div>
+                                                                <input class="form-control showsS" id="soFilghtNumber" type="text" placeholder="Filght Number here" onchange="ThanhToanFastTrack()"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="radio" >
+                                        <label>
+                                            <input type="radio" name="sample1" value="No,thank" checked="checked" onclick="EditFastTrack1(this);">
+                                            No,thanks
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <h4>PRIVATE CAR PICK-UP SERVICE</h4>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="radio container" data-toggle="collapse" data-target="#rdCar">
+                                            <label>
+                                                <input type="radio" name="sample3h" value="Yes, please (Recommended)" onclick="ThanhToan();" >
+                                                Yes, please (Recommended)
+                                            </label>
+
+                                        </div>
+                                        <div class="collapse" id="rdCar">
+                                            <div class="col-md-12">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">info</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="form-group" style="margin-top: -20px">
+                                                            <div class="col-md-12">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="radio" id="raStandCar">
+                                                                            <label class="container ">
+                                                                                <input type="radio" name="Standard car" value="Standard car" checked="checked" >
+                                                                                Standard car
+                                                                            </label>
+                                                                        </div>
+                                                                        <span class="text-left" id="raItemStandardcar" style="white-space: normal">
+                                                                            Civic, Chervolet, Innova, Altis, Fortuner... Unlimited miles, A/C, 2/4 doors, Tolls, insurance, mineral water, cold towels
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="container col-md-12 col-sm-12 hidden">
+                                                                        <div class="radio" id="raStandCar1">
+                                                                            <label class="container ">
+                                                                                <input type="radio" name="Standard car" value="Luxury Car">
+                                                                                Luxury Car
+                                                                            </label>
+                                                                        </div>
+                                                                        <span style="text-align: center" id="raItemStandardcar1">
+                                                                            Camry, BMW... Unlimited miles, A/C, 2/4 doors, Tolls, insurance, mineral water, cold towels
+                                                                        </span>
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                                <div class="row">
+
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label class="control-label " for="slPriceHotel">Number Seats</label>
+                                                                            <select class="form-control" id="soChoNgoi" style="height: 35px" onchange="ThanhToan()">
+                                                                                <option value="1" selected="selected" disabled="disabled"> Seats </option>
+                                                                                @{
+                                                                                    if (chongoi != null)
+                                                                                    {
+                                                                                        foreach (var w in chongoi)
+                                                                                        {
+                                                                                            <option>@w</option>
+                                                                                        }
+                                                                                    }
+
+                                                                                }
+
+                                                                            </select>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="col-md-12 container-fluid center-element" style="color: red;">
+                                                                        <p id="giaTienSanbay" class="bounce bounceOutRight" ></p>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+                                                           
+                                                        </div>
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="radio container" >
+                                            <label>
+                                                <input type="radio" name="sample3h" value="No, thanks" checked="checked" onclick="radioHide(this); EditCarPick1(this);">
+                                                No, thanks
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <h4>HOTEL RESERVATION</h4>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="radio container" data-toggle="collapse" data-target="#demo1">
+                                            <label class="container">
+                                                <input type="radio" name="hotel_res" value="Yes, please (Recommended)" onclick="OnClickHotel(this); EditHotel();">
+                                                Yes, please (Recommended)
+                                            </label>
+                                        </div>
+                                        <div class="collapse" id="demo1">
+                                            <div class="col-md-12 well">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label " for="slLocaltion">Location</label>
+                                                        <select class="form-control" id="slLocaltion" style="height: 35px" onchange="EditHotel()">
+                                                            @*<option>Ha Noi</option>
+                                                            <option>Da Nang</option>
+                                                            <option>Ho Chi Minh</option>
+                                                            <option>Nha Trang</option>*@
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 ">
+                                                    <div class="form-group">
+                                                        <label class="control-label " for="slPriceHotel">Price</label>
+                                                        <select class="form-control" onchange="EditHotel()" id="slPriceHotel" style="height: 35px">
+                                                            @*<option value="From $20 - $35">From $20 - $35</option>
+                                                            <option value="From $35 - $50">From $35 - $50</option>
+                                                            <option value="From $50 - $75">From $50 - $75</option>
+                                                            <option value="From $75 - $100">From $75 - $100</option>
+                                                            <option value="Over $100">Over $100</option>*@
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label " for="hotel_room_type">Room type:</label>
+                                                        <select class="form-control" id="hotel_room_type" name="hotel_room_type" style="height: 35px" onchange="EditHotel()">
+                                                            @*<option value="Single">Single</option>
+                                                            <option value="Double">Double</option>
+                                                            <option value="Twin">Twin</option>
+                                                            <option value="Interconnecting">Interconnecting</option>
+                                                            <option value="Adjonning">Adjonning</option>*@
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <span class="container">Other requirement:</span>
+                                                    <textarea id="hotel_other_requirement" onchange="EditHotel()" name="hotel_other_requirement" placeholder="Type your requirement here" class="form-control container"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="radio container">
+                                            <label class="container">
+                                                <input type="radio" name="hotel_res" value="No, thanks" onclick="EditHotel1(this);" checked="checked">
+                                                No, thanks
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container-fluid col-md-6" id="sumPaypal" onmousemove="TinhToanSumPay()" onclick="TinhToanSumPay()">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">REVIEW YOUR ORDER</div>
+                        <div class="panel-body">
+                            <div class="containe">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 id="idinvoice" style="color: red">Invoice number: &nbsp;</h5>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <h5 id="sumPreviews1" class="text-success col-md-12 col-sm-12 col-xs-12"></h5>
+                                            <ol class="sumreview"></ol>
+                                            <h5 id="sumPreviews" class="dange-text col-md-12 col-sm-12 col-xs-12"></h5>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="col-md-12 ">
+                                        <h5 class="text-danger">Apply Promotion code (optional)</h5>
+                                    </div>
+                                    <div align="left" class="row col-md-12">
+                                        <div class="col-md-12" >
+                                            <div class="form-group label-floating">
+                                                <div class="input-group">
+
+                                                    <label class="control-label" for="addon3a">Apply Code &nbsp;<span class="text-center text-danger tbPaypals"></span></label>
+                                                    <input type="text" id="addon3a" class="form-control" onkeyup="SumApp()">
+                                                    
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-fab btn-fab-mini" onclick="SumApp()">
+                                                            <i class="material-icons">send</i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row" style="margin-left: -5px">
+                                                <h5 class="left">Current total fees &nbsp;</h5>
+                                                <h5 class="text-center text-danger thanhtoanPaypal"></h5>
+                                               
+                                            </div>
+                                        </div>
+                                      </div>
+                                    <div class="col-md-12">
+                                        <span class="text-primary ">Select payment method:</span>
+                                        <div class="form-group" style="margin-top: -5px">
+                                            <div>
+                                                <div class="radio ">
+                                                    <label style="font-size: 0.9em">
+                                                        <input type="radio" name="hotel" value="hotel">
+                                                        Western Union
+                                                    </label>
+                                                </div>
+                                                <div class="radio ">
+                                                    <label style="font-size: 0.9em">
+                                                        <input type="radio" name="hotel" value="hotel">
+                                                        Paypal
+                                                    </label>
+                                                </div>
+                                                <div class="radio ">
+                                                    <label style="font-size: 0.9em">
+                                                        <input type="radio" name="hotel" value="hotel">
+                                                        Visa/Master/AMEX/JCB card/Union Pay Card
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <a class="btn btn-raised btn-inverse">Next <i class="glyphicon glyphicon-arrow-right"></i></a>
+                                            <a class="text-left container">Or submit now pay later</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+ 
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                trigger: 'focus'
+            });
+        });
+   
+    </script>
+</body>
+</html>
+<script>
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+   
+</script>
+<script>
+    $(document).ready(function () {
+        //ThanhToanFastTrack();
+        //ThanhToan();
+        //$(".showsS").hide();
+        //$(".tbPaypalsa").hide();
+        //TinhToanSumPay();
+        $("#raStandCar").hover(function() {
+
+            $("#raItemStandardcar").css("color", "blue");
+            //$("#raItemStandardcar").css("background", "gainsboro");
+        });
+        $("#raStandCar").mouseout(function() {
+
+            $("#raItemStandardcar").css("color", "#424242");
+            $("#raItemStandardcar").css("background", "transparent");
+        });
+        $("#raStandCar1").hover(function() {
+            //$("#raItemStandardcar1").css("background", "gainsboro");
+            $("#raItemStandardcar1").css("color", "blue");
+        });
+        $("#raStandCar1").mouseout(function() {
+            $("#raItemStandardcar1").css("background", "transparent");
+            $("#raItemStandardcar1").css("color", "#424242");
+        });
+    })
+</script>
+<script>
+    function radioHide(a) {
+        $(a).click(function() {
+            $(".collapse").collapse('hide');
+        });
+    };
+
+    function rdtoggle(a) {
+        $(a).click(function () {
+            $(".collapse").collapse('toggle');
+        });
+    }
+</script>
+
+<script>
+        $(document).ready(
+            function () {
+               
+                $(window).load(function () {
+                    ViewFastTrack();
+                    $(".tbPaypals").hide();
+                    LoadArrivalHotel();
+                    LoadGiaphongHotel();
+                    LoadKieuphongHotel();
+                    LoadPreview();
+                    //ThanhToan();
+                      $.ajax({
+                          url: "/Default/ShowChongoi",
+                        type: "Get",
+                        success: function (data) {
+                            $('#soChoNgoi').empty();
+                            //$('#soChoNgoi').append(new Option("Seat",disable));
+                            for (var i = 0; i < data.length; i++) {
+                                var opt = new Option(data[i]);
+                                $('#soChoNgoi').append(opt);
+
+                            }
+
+                        }
+
+                    });
+                      SumApp();
+                });
+
+        });
+</script>

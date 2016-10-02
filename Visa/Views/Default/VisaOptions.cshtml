@@ -1,0 +1,434 @@
+﻿@using System.ComponentModel
+@using System.Globalization
+@using System.Runtime.Serialization
+@model Visa.TRUONDOAN
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    
+    <title>Visa Options</title>
+</head>
+@{
+    var note = ViewBag.note as List<NOTE>;
+    var begindate = note.Find(j => j.id.Equals(2)).note1;
+    var enddate = note.Find(j => j.id.Equals(3)).note1;
+    var protimedate = note.Find(j => j.id.Equals(6)).note1;
+    var noteProtime = note.Find(j => j.id.Equals(8)).note1;
+    var notePrivate = note.Find(j => j.id.Equals(9)).note1;
+}
+<body onload="Money()">
+@*<h1>thong bao @ViewBag.step1</h1>*@
+   
+<p id="test"></p>
+<form action="/Default/VisaOptions" method="POST" id="myform" >
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="row ">
+<div class="col-md-6 container" style="margin-top: -15px">
+    <div class="col-md-12">
+        <div class="form-group label-floating">
+            <label class="control-label " for="numberVisa"> Number of visa</label>
+            @{
+                var dsqt = ViewBag.numberofapplicant as List<TNumberofapplicant>;
+                            @*<p> Danh sach @dsqt.Count</p>*@
+            if (dsqt != null)
+            {
+                @Html.DropDownListFor(model => model.numberofapplicant, (IEnumerable<SelectListItem>)dsqt.Select(x => new SelectListItem { Text = x.valuenumber + " " + x.valuetext, Value = x.valuenumber.ToString() }), new { @name = "ok", @class = "form-control", @id = "numberVisa", @style = "height: 35px", onchange = "Money()" })
+            }
+            }
+
+            @*<select class="form-control" id="numberVisa" style="height: 35px">
+                                @{
+                                    for (int i = 1; i <= 10; i++)
+                                    {
+                                        <option value=@i> @i&nbsp; Applicant</option>
+                                    }
+                                }
+                            </select>*@
+        </div>
+
+    </div>
+    <div class="col-md-12" style="margin-top: 5px">
+        <div class="form-group label-floating" style="margin-top: -1px">
+            <label class="control-label " for="purpose1"> Purpose of visit</label>
+            @*  <select class="form-control" id="Purpose" onchange=" PurposeChange(1) " style="height: 35px">
+                                <option value="1">Tourism</option>
+                                <option value="2">Business</option>
+
+                            </select>*@
+            @{
+                var purposelist = ViewBag.Purpose as List<TPurposeofvisia>;
+                if (purposelist != null)
+                { @Html.DropDownListFor(model => model.purposeofvisit, (IEnumerable<SelectListItem>)purposelist.Select(x => new SelectListItem { Text = x.name, Value = x.name.ToString() }), new { @class = "form-control", @id = "purpose1", @style = "height: 35px", @onchange = "purpose1Visa(this)" }) }
+            }
+           
+        </div>
+
+    </div>
+    <div class="col-md-12" style="margin-top: 5px" id="divtypeOf">
+        <div class="form-group label-floating" style="margin-top: -1px">
+                       
+                       
+            @{
+
+                var l4 = ViewBag.typeOfVisa as List<ViSaPart1>;
+                            
+                if (l4 != null)
+                {
+                    <label class="control-label " for="typeOf"> Type of visa</label>
+                              
+                    @Html.DropDownListFor(model => model.typeofvisa, (IEnumerable<SelectListItem>)l4.Select(x => new SelectListItem { Text = x.typeOfVisa.ToString()}), new { @class = "form-control", @id = "typeOf", @style = "height: 35px", onchange = "Money()" })
+                }
+            }
+            @*<select  id = "typeOf" class = "form-control" style = "height: 35px"></select>*@
+                      
+        </div>
+
+    </div>
+
+
+    <div class="col-md-12" style="margin-top: 5px">
+        <div class="form-group label-floating" style="margin-top: -1px">
+            <label class="control-label " for="Port"> Port of arrival</label>
+                     
+            @{
+                var l5 = ViewBag.Port as List<TArrivalPort>;
+                if (l5 != null)
+                {
+                    @Html.DropDownListFor(model => model.arrivalPort, l5.Select(x => new SelectListItem { Text = x.name, Value = x.name.ToString() }), new { @class = "form-control", @id = "Port", @style = "height: 35px" })
+                }
+            }
+           
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="form-group" style="margin-top: -20px; z-index: 152">
+            <label class="control-label " for="processingTimes" id="proces">
+                Processing Time
+                <b id="proces1" class="text-danger"></b>
+                <i id="bginf2" class="glyphicon glyphicon-question-sign text-info left" style="z-index: 1000" data-toggle="tooltip" data-placement="auto" title="@protimedate">
+
+                </i>
+            </label>
+            @{
+                var l6 = ViewBag.processtime as List<Processingtime>;
+                if (l6 != null)
+                {
+                  var  l = l6.Select(j => j.name).Distinct();
+                    @Html.DropDownListFor(model => model.processingtime, l.Select(x => new SelectListItem { Text = x, Value = x }), new { @class = "form-control", @id = "processingTimes", @style = "height: 35px", onchange = "Money()" })
+                }
+            }
+            @*@Html.LabelFor(model=>model.payMember)*@
+            <div id="myAlert">
+                <div class="alert alert-dismissible alert-danger fade in" id="divAlert" style="position: relative">
+                    <i onclick="$('.alert').hide()" class="material-icons" style="cursor: pointer; float: right; position: absolute; right: 10px;z-index: 1000">clear</i>
+                  @protimedate
+                <a class="alert-link" href="javascript:void(0)">Them thong tin cho quy khach</a> .
+            </div>
+            </div>
+         
+            @*<select class="form-control" id="ProcessingTime" style="height: 35px">
+                                <option value="1">Normal (2 working days)</option>
+                                <option value="2">Urgent (1 working day)</option>
+                                <option value="3">Super Urgent (4 working hours)</option>
+
+                            </select>*@
+
+        </div>
+
+    </div>
+
+    <div class="col-md-12" style="margin-top: 5px">
+        <div class="row">
+            <div class="col-md-6 center-element hidden">
+                <span class="control-label">Processing Time</span>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-6 container">
+    <div class="col-md-12">
+        @{
+            var date = DateTime.UtcNow.AddHours(7).ToUniversalTime();
+            var t0 = "";
+            var ng = "";
+            if (date.Month < 10)
+            {
+                t0 = "0";
+            }
+            if (date.Day < 10)
+            {
+                ng = "0";
+            }
+            var ngay = string.Format("{0}-{3}{1}-{4}{2}", date.Year, date.Month, date.Day, t0, ng);
+
+
+
+            var dateend = date.AddMonths(1);
+          
+            <div class="row" style="margin-top: -20px">
+                <div class="col-md-6 form-group container " style="margin-top: -1px">
+                    <label class="control-label" for="begin" id="bgin1">
+                        Arrival date &nbsp;
+                        <i id="bgin2" class="glyphicon glyphicon-question-sign text-info" data-toggle="tooltip" data-placement="bottom" title="@begindate">
+
+                        </i>
+                        <span id="bgin3" class="text-success"></span>
+                    </label>
+                    @Html.TextBoxFor(model => model.fromdate, null, new { @style = "height: 35px;cursor: pointer", @class = "form-control", min = @ngay, onchange = "ExitDateFrom()", @id = "begin", @type = "date" , @required = "required" })
+                    @*<input type="date" class="form-control" value="@ngay" id="begin" style="margin-top: 0px; cursor: pointer" />*@
+                </div>
+                <div class="col-md-6 form-group " style="margin-top: -1px">
+                    <div>
+                        <label class="control-label" for="end">
+                            Exit date &nbsp;<b  class="text-danger"></b> &nbsp;<i class="glyphicon glyphicon-question-sign text-info" data-toggle="tooltip" data-placement="bottom"
+                                                                                  title="@enddate">
+
+                            </i>
+
+                        </label>
+                     
+                    </div>
+                    @Html.TextBoxFor(model => model.exitdate, null, new { @style = "height: 35px;cursor: pointer", @class = "form-control", @id = "end", @type = "date", @required = "required",min= @ngay })
+                    @*<input type="date" class="form-control" id="end" style="margin-top: 00px; cursor: pointer" />*@
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-12">
+        <div class="form-group label-floating" style="margin-top: -2px">
+            <label class="control-label" for="btn_fullname1">Full Name<span class="text-danger">*</span></label>
+            @Html.TextBoxFor(model => model.fullname, null, new { @style = "height: 35px", @class = "form-control", @id = "btn_fullname1", @required = "required"  })
+            @*<input class="form-control" id="btn_fullname1" style="height: 35px" required type="text">*@
+        </div>
+        <div class="form-group label-floating" style="margin-top: -2px">
+            <label class="control-label" for="emai1">Email<span class="text-danger">*</span></label>
+            @Html.TextBoxFor(model => model.email, null, new { @style = "height: 35px", @class = "form-control", @id = "emai1", @type = "email", @required = "required" })
+            @*<input class="form-control" name="emai1" id="emai1" style="height: 35px" type="email" required="required" data-msg-required="Please your email address">*@
+        </div>
+        <div class="form-group label-floating" style="margin-top: -2px">
+            <label class="control-label" for="emai2" style="height: 35px">Confirm email <span class="text-danger">*</span> <i id="iconfrimemail"></i></label>
+          
+            @Html.TextBoxFor(model => model.email, null, new { @style = "height: 35px", @class = "form-control", @id = "emai2", @type = "email", @required = "required", @onchange = " confirmEmail()" })
+        </div>
+    </div>
+    <div class="col-md-12">
+        @*<div class="form-group label-floating" style="margin-top: -2px">
+                            <label class="control-label" for="btn_Address1">Address<span class="text-danger">*</span></label>
+                            @Html.TextBoxFor(model => model.email, null, new { @style = "height: 35px", @class = "form-control", @id = "emai2", @required = "required", @onchange = " confirmEmail()" })
+                                   <input class="form-control" id="btn_Address1" style="height: 35px" required="" type="text">
+                        </div>*@
+        <div class="form-group label-floating" style="margin-top: -2px">
+            <label class="control-label" for="btn_phone1">Contact phone </label>
+            @*<input class="form-control" id="btn_phone1" style="height: 35px" type="tel" aria-required="true">*@
+            @Html.TextBoxFor(model => model.phone, null, new { @style = "height: 35px", @class = "form-control", id = "btn_phone1" })
+            @Html.HiddenFor(model => model.ngay, DateTime.Now.ToShortDateString())
+        </div>
+        <div class="form-group " style="margin-top: -20px">
+            <label class="control-label">Private/confidential letter  &nbsp;
+                <i id="bginf3" class="glyphicon glyphicon-question-sign text-info left" style="z-index: 1000" data-toggle="tooltip" data-placement="auto" title="@notePrivate">
+
+                </i>
+            </label>
+            <div class="checkbox">
+
+                <label>
+                    <input type="checkbox" name="checkbox" id="checkPrivate" onclick="ShowCheckPrivate()"> Show me in a private visa letter
+                </label>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="col-md-12" style="background: gainsboro">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="list-inline">
+                <h2>Total Estimated Service Fee &nbsp;@Html.LabelFor(model => model.payMember, new { id = "tong-tien", @class = "text-danger  text-left h1" })USD
+    @*<span id="tong-tien" class="text-danger  text-left">$21</span>*@</h2>
+               
+            </div>
+            <i class="text-info">Total Estimated Service Fee</i>
+        </div>
+        <div class="col-md-3 center-element" id="btsubmit" >
+            <button type="submit" id="btstep1" onmouseenter="Arrivaldate()"  class="btn btn-raised btn-inverse">Step 2 <span class="glyphicon glyphicon-menu-right"></span></button>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 center-element text-left">
+    <p>
+        Payment Method :<img src="https://booking.vietnam-visa.com/public//images/booking/payment-methods-img.png">
+    </p>
+</div>
+</div>
+</form>
+  
+    <!-- Modal -->
+    <div id="modaltbBegin" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Thong bao</h4>
+                </div>
+                <div class="modal-body">
+                    <p>@noteProtime</p>
+                    <span class="text-info">Yes: Choose Supper Agent</span>
+                    <span class="text-danger" style="float:right"> Cancel:Choose after date @DateTime.UtcNow.AddHours(7).ToShortDateString()</span>
+                    <label class="hidden" id="minNgaybegin">@DateTime.UtcNow.AddHours(7).AddDays(1).ToShortDateString()</label>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btYes" onclick="Choose()" class="btn btn-inverse " data-dismiss="modal">Yes, Thank!</button>
+                    <button type="button" id="btCancel" onclick="ChooseCancel()" class="btn btn-warning" data-dismiss="modal">No, Thank!</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function Step2() {
+
+        //$("#nhanInfor").append("2");
+
+        //$.ajax({
+        //    // edit to add steve's suggestion.
+        //    //url: "/ControllerName/ActionName",
+        //    url: '/Default/index',
+        //    success: function (data) {
+        //        // your data could be a View or Json or what ever you returned in your action method 
+        //        // parse your data here
+        //        //alert(data);
+        //    }
+        //});
+        //var number = 2;
+        //for (var i = 1; i <= 4; i++) {
+        //    if (i == number) {
+        //        $("#step" + number).animate({
+        //            opacity: '0.1'
+        //        });
+        //        $("#step" + number).animate({
+        //            height: 'show'
+        //        });
+        //        $("#step" + number).animate({
+        //            opacity: '1'
+        //        });
+        //        $("#bt" + number).addClass("active");
+        //    } else {
+        //        $("#bt" + i).attr('class', '');
+        //        $("#step" + i).animate({
+        //            height: 'hide'
+        //        });
+
+        //    }
+        //}
+        //window.location.href = "/Default/index/";
+    }
+</script>
+<script>
+    var i = 0;
+
+    function confirmEmail() {
+        var email1f = $("#emai1").val();
+        var email2f = $("#emai2").val();
+        $("#iconfrimemail").removeClass("");
+        if (email1f != email2f) {
+
+            $("#iconfrimemail").text("Email Not Matching!");
+            $("#iconfrimemail").addClass("text-danger");
+            $("#btstep1").attr('disabled','disabled');
+        } else {
+            $("#iconfrimemail").addClass("text-success");
+            $("#iconfrimemail").text("success");
+            $("#btstep1").removeAttr('disabled');
+        }
+    }
+</script>
+<script type="text/javascript">
+    //function getDefaultDate() {
+    //    var thang = $("#typeOf").val();
+    //    var now = new Date($("#begin").val());
+    //    var day = ("0" + now.getDate()).slice(-2);
+    //    var month = ("0" + (now.getMonth()+thang + 1)).slice(-2);
+    //    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+    //    return today;
+    //}
+ 
+  
+    //var a1 = $("#begin").val();
+    //function Exitday() {
+    //    //$("#test").text(new Date($("#begin").val()));
+    //    var url = '/Default/MaxExitdate';
+    //   if($("#begin").val()!=''){  var now = new Date($("#begin").val());
+
+    //        //alert(now.getTime());
+    //        var thag = $("#typeOf").val();
+    //        var endf = new Date(getAddDateMonthYear(now, 0, thag, 0));
+    //        var d = new Date();
+       
+       
+    //        $("label b").text("Max " + getAddDateMonthYear(now, 0, thag, 0));
+    //        $("#end").attr("max", getAddDateMonthYear(now, 0, thag, 0));}
+      
+    //    dksau12htrua();
+    //}
+</script>
+<script>
+    $(document).ready(function () {
+        //dksau12htrua();
+        localStorage["tienPrivate"] = 0;
+        localStorage["tienDv"] = 0;
+        $("#divAlert").hide();
+        purpose1Visa($("#purpose1"));
+        ExitDateFrom();
+        setInterval(function() {
+            datetimeUtc();
+            },
+            1000);
+       
+        setInterval(function() {
+            //$('#myform').validate({
+            //    rules: {
+            //        'email': {
+            //            required: true,
+            //            minlength: 5
+            //        },
+            //        email2: {
+            //            equalTo: '[name="email"]'
+            //        }
+            //    },
+            //    submitHandler: function (form) { // for demo
+                    
+            //        return false;
+            //    }
+            //});
+        });
+    });
+
+    function DieuKien() {
+        var d = new Date();
+      
+      
+        var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        var thag = $("#typeOf").val();
+        var dateNow = d.toLocaleTimeString();
+        $("#bgin3").text("Now " + " " + dateNow);
+        
+
+
+        $("label b").text("Max " + getAddDateMonthYear(d, 0, thag, 0));
+        $("#end").attr("max", getAddDateMonthYear(now, 0, thag, 0));
+
+    }
+</script>

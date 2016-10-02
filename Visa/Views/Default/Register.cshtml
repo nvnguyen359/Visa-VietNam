@@ -1,0 +1,60 @@
+﻿@model Visa.TAIKHOAN
+
+<div class="container">
+    @ViewBag.a
+    <div class="jumbotron" style="background: white; margin-top: 20px">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>TAIKHOAN</h4>
+
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.name, htmlAttributes: new {@class = "control-label"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.name, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.name, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.email, htmlAttributes: new {@class = "control-label"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.email, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.email, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group  label-floating">
+                    @Html.LabelFor(model => model.pass, htmlAttributes: new {@class = "control-label"})
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.pass, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.pass, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group label-floating hidden">
+                    @Html.LabelFor(model => model.ChucDanh, htmlAttributes: new {@class = "control-label"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ChucDanh, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.ChucDanh, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+                <div class="form-group label-floating col-md-6">
+                    <label for="maso" class="control-label">Ma so dac biet</label>
+                    <input type="text" class="form-control" name="maso" style="height: 35px">
+
+                </div>
+
+                <button type="submit" class="btn btn-inverse">Creat</button>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </div>
+</div>

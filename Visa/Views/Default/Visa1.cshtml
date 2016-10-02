@@ -1,0 +1,152 @@
+﻿@model Visa.BGIAVISA1
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+<div class="container-fluid" style="background: white">
+    <div class="well">
+        @using (Html.BeginForm("Visa1", "Default"))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h3 class="tealert-inverse alert-inverse">Visa Part 1</h3>
+                   
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3" onmouseover="KyhieuTypeVisa(this)" >
+                            <div class="form-group label-floating" >
+                                <label  class="control-label" for="tb-visa1-typevisa"> Purpose of visit</label>
+                                <div>
+                                    @{
+                                        var list1 = ViewBag.typeOfVisa1 as List<string>;
+                                    }
+                                    @Html.DropDownListFor(model => model.typeOfVisa, list1.Select(x => new SelectListItem { Text = x, Value = x }), new { @class = "form-control col-md-10", @id = "tb-visa1-typevisa", @style = "height: 35px",onchange= "KyhieuTypeVisa()" })
+                                    @Html.ValidationMessageFor(model => model.typeOfVisa, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group" style="margin-top: -11px">
+                                <label class="control-label" for="tb-visa1-Sign">Sign</label>
+                                <div>
+                                    @Html.EditorFor(model => model.kyhieu, null, new
+                                    {
+                                        htmlAttributes = new { @class = "form-control col-md-10", id = "tb-visa1-Sign", @style = "height: 35px" }
+                                    })
+                                    @Html.ValidationMessageFor(model => model.kyhieu, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group label-floating col-md-6">
+                            <label class="control-label" for="tb-visa1-note">Note</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ghichu,null, new { htmlAttributes = new { @class = "form-control col-md-10", id = "tb-visa1-note" } })
+                                @Html.ValidationMessageFor(model => model.ghichu, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="form-group label-floating  col-md-2">
+                            <label class="control-label" for="tb-visa1-min">Min Pax</label>
+                            <div >
+                                @{
+                                    var list2 = ViewBag.Numberint as List<int>;
+                                }
+                                @Html.DropDownListFor(model => model.minpax, list2.Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }), new { @class = "form-control col-md-10", @id = "tb-visa1-min", @style = "height: 35px" })
+                                @Html.ValidationMessageFor(model => model.minpax, "", new {@class = "text-danger"})
+                            </div>
+                        </div>
+
+                        <div class="form-group label-floating  col-md-2">
+                            <label class="control-label" for="tb-visa1-max">Max Pax</label>
+                            <div>
+                                @{
+                                    var list3 = ViewBag.Numberint as List<int>;
+                                }
+                                @Html.DropDownListFor(model => model.maxpax, list3.Select(x => new SelectListItem { Text = x.ToString(), Value = x.ToString() }), new { @class = "form-control col-md-10", @id = "tb-visa1-max", @style = "height: 35px" })
+                                @Html.ValidationMessageFor(model => model.maxpax, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group label-floating  col-md-2">
+                            <label class="control-label" for="tb-visa1-pice">Price</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.donGia, null, new { htmlAttributes = new { @class = "form-control", id = "tb-visa1-pice", type = "number", @style = "height: 35px" } })
+                                @Html.ValidationMessageFor(model => model.donGia, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group label-floating  col-md-6">
+                            <label class="control-label" for="tb-visa1-content">Content</label>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ndungpax,null, new { htmlAttributes = new { @class = "form-control", id = "tb-visa1-content", @style = "height: 35px" } })
+                                @Html.ValidationMessageFor(model => model.ndungpax, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                  
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-raised btn-inverse" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+    </div>
+</div>
+  
+</body>
+</html>
+<script>
+    function KyhieuTypeVisa() {
+        var h = $("#tb-visa1-typevisa").val().split(' ');
+        
+        var kh = "";
+        for (var i = 0; i < h.length; i++) {
+            var j = "";
+
+            if (i == 0) { j += h[0]; } else {
+
+                switch (h[i]) {
+                    case "month":
+                        j += "T";
+                        break;
+                    case "single":
+                        j += "1L";
+                        break;
+                    case "multiple":
+                        j += "NL";
+                        break;
+                    case "year":
+                        j += "N";
+                        break;
+
+                       
+
+                }
+
+            }
+
+            kh += j;
+        }
+       
+        $("#tb-visa1-Sign").val(kh);
+    }
+</script>

@@ -1,0 +1,54 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+   
+
+    <div  id="steps1">
+        @{@Html.Partial("Visa11")};
+
+    </div>
+    <div class="collapse" id="steps2">
+        @Html.Partial("Steps2")
+    </div>
+    <div class="collapse" id="steps3">
+
+        @Html.Partial("Steps3")
+    </div>
+
+
+
+</body>
+</html>
+<script>
+    $(document)
+        .ready(function() {
+            //Steps();
+        });
+    function Steps(number) {
+        for (var i = 1; i <= 4; i++) {
+            if (i == number) {
+                $("#steps" + number).animate({
+                    opacity: '0.1'
+                });
+                $("#steps" + number).animate({
+                    height: 'show'
+                });
+                $("#steps" + number).animate({
+                    opacity: '1'
+                });
+                //$("#bt" + number).addClass("active");
+            } else {
+                //$("#bt" + i).attr('class', '');
+                $("#steps" + i).animate({
+                    height: 'hide'
+                });
+
+            }
+        }
+
+    }
+</script>

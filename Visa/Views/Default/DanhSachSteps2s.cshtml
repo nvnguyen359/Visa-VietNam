@@ -1,0 +1,120 @@
+﻿
+<div id="viewds">
+    
+    @{
+        var tv = ViewBag.dataThanhvien as IEnumerable<THANHVIEN>;
+        var ds = ViewBag.tr as TRUONDOAN;
+
+        int dem = 0;
+        if (tv != null)
+        {
+            foreach (var item in tv.OrderByDescending(j=>j.id))
+            {
+                <div class="panel panel-success stepRow" style="position: relative">
+                    <div class="panel-heading ">
+                        <h3 class="panel-title col-md-12 hj2 text-center">
+                            &nbsp;  @(tv.Count() - dem++)&nbsp;&nbsp;&nbsp;@item.fullName.ToUpper()
+                            
+                        </h3>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-2 hidden-xs center-element">
+                                    @{
+                                        var gender = item.gender.Contains("male");
+                                        if (gender)
+                                        {
+                                            <img class="img-rounded animated zoomIn" src="/image/Man-9-icon.png" />
+                                        }
+                                        else
+                                        {
+                                            <img class="img-rounded animated zoomIn" src="/image/Man-14-icon.png" />
+                                        }
+                                    }
+                                </div>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
+                                    <ol class="col-md-6 col-xs-6">
+
+                                        <li>Date of birth:&nbsp; <span class="text-success">@item.pateOfBirth.Value.ToShortDateString()</span> </li>
+                                        <li>Gender: &nbsp;@item.gender</li>
+                                        <li>Nationality:&nbsp;@item.nationality</li>
+                                        <li>Passport Number:&nbsp;@item.passPortNumber</li>
+                                        <li>Passport expiry date:&nbsp;@item.passportexpireddate.Value.ToShortDateString() </li>
+                                    </ol>
+                                    <ol class="col-md-6 col-xs-6">
+                                        @{
+                                            //var ds = ViewBag.tr as Visa.TRUONDOAN;
+                                            if (ds != null)
+                                            {
+                                                <li>Type Of Visa:&nbsp; @ds.typeofvisa </li>
+                                                <li>Porocessing Time: &nbsp;@ds.processingtime</li>
+                                                <li>Arrival Port:&nbsp;@ds.arrivalPort</li>
+                                                <li>Arrival Date:&nbsp;@ds.fromdate.Value.ToShortDateString()</li>
+                                                <li>Exit Date:&nbsp;@ds.exitdate.Value.ToShortDateString() </li>
+                                            }
+                                        }
+
+                                    </ol>
+
+                                    <div class="row col-md-12" style="border: 1px;background: azure;border-radius: 5px">
+                                        <h4 class="text-center text-right col-md-6 col-xs-6 col-sm-6">SERVICE FEES</h4>
+                                        <h4 class="text-danger text-left col-md-6 col-xs-6 col-sm-6">@(@Shared.ParseDouble(@item.pay1.ToString()) + @Shared.ParseDouble(@item.pay2.ToString())) &nbsp;USD</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="float: left; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; position: absolute;" class="center-element btnEditItem" onclick="ShowThanhVien(@item.id)">
+                        <button class="btn btn-danger btn-raised btn-fab btdstp2" >
+                            <i class="material-icons " style="cursor: pointer; z-index: 1000;color: white">mode_edit</i>
+                        </button>
+                    </div>
+                </div>
+
+                                        }
+                                        @*<div>  @tv.Count()</div>*@
+                                        }
+
+    }
+
+
+
+</div>
+
+
+
+<div class="container-fluid"></div>
+<script>
+    $(document)
+        .ready(function () {
+          
+            $('.btnEditItem')
+                .hover(function () {
+                    $('.btdstp2').addClass('animated bounceInUp');
+                    window.setTimeout(function () {
+                        $('.btdstp2').removeClass('animated bounceInUp');
+                    }, 2000);
+
+                });
+        });
+    
+</script>
+<script>
+    function animationHover(element, animation) {
+        element = $(element);
+        element.hover(
+            function() {
+                element.addClass('animated ' + animation);
+            },
+            function() {
+                //wait for animation to finish before removing classes
+                window.setTimeout(function() {
+                        element.removeClass('animated ' + animation);
+                    },
+                    2000);
+            });
+    }
+</script>

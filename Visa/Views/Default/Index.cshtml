@@ -1,0 +1,266 @@
+﻿@using System.Globalization
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Default.cshtml";
+}
+
+@*<iframe height="100%" width="100%"  src="http://dantri.com.vn/" name="iframe_a"></iframe>*@
+<div class="container-fluid">
+   
+    @{
+        int k = 1;
+
+        if (@ViewBag.dem != null)
+        {
+
+            try
+            {
+                k = int.Parse(@ViewBag.dem);
+            }
+            catch (Exception)
+            {
+
+                k = @ViewBag.dem;
+            }
+
+        }
+        <p class="hidden" id="sttk"> @k</p>
+        <div class="row">
+            <div style="padding-left: 5px; padding-right: 5px; background: white">
+                <ul class="nav nav-wizard form-horizontal">
+                    <li id="bt0" class="active" style="width: 120px">
+                        <a href="#step1" id="btn0" class="hidden"> 1 Visa Options</a>
+                    </li>
+                    <li id="bt1" class="active">
+                        <a href="#step1" id="btn1"  class="btn-default">Step 1 </a>
+                    </li>
+
+                    <li id="bt2" class="disabled">
+                        <a href="#step1" id="btn2"  class="btn-default">Step 2 </a>
+                    </li>
+
+                    <li id="bt3" class="disabled">
+                        <a href="#step1" id="btn3"  class="btn-default">Step 3 </a>
+                    </li>
+                    <li id="bt4" class="hidden">
+                        <a href="#step1" id="btn4" class="hidden"> 4</a>
+                    </li>
+                    <li id="bt4" class="center-text" >
+                      
+                    </li>
+                </ul>
+                <div class="center-element">
+                    <p id="btTimeUtc"  style="margin-left: 50px; color: white; text-shadow: 1px 1px 1px #000000 ;"></p>
+                </div>
+              
+                @{
+                    try
+                    {
+                        <div  id="step1">
+                         
+                            @Html.Partial("VisaOptions");
+                        </div>
+                        <div class="collapse" id="step2">
+                            @Html.Partial("Steps2s")
+                        </div>
+                        <div class="collapse" id="step3">
+
+                            @Html.Partial("Steps3")
+                        </div>
+                    }
+                    catch (Exception)
+                    {
+
+                      
+                    }
+                }
+                <div class="collapse" id="step4" style="width: 100%">
+                    <div class="panel panel-danger ">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">PASSPORT INFORMATION</h3>
+                        </div>
+                        <div class="panel-body container-fluid">
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        var k = parseInt($("#sttk").text());
+      
+        Steps(k);
+        document.getElementById('iframe').innerHTML = frames['foo'].document.body.innerHTML;
+        //$("#loadTest").html('<object data="http://www.vietnam-visa.com/">');
+        $.load('https://www.vietnam-visa.com/', function (data) {
+            $('#step4').html(data);
+        });
+        //$("#thangtuychon").hover(function() {
+        //    $("#thangchuan").hide();
+        //});
+        //$("#thangtuychon").mouseout(function () {
+        //    $("#thangchuan").show();
+        //});
+    });
+
+    function Steps(number) {
+        for (var i = 1; i <= 4; i++) {
+            if (i == number) {
+                $("#step" + number).animate({
+                    opacity: '0.1'
+                });
+                $("#step" + number).animate({
+                    height: 'show'
+                });
+                $("#step" + number).animate({
+                    opacity: '1'
+                });
+                $("#bt" + number).addClass("active");
+            } else {
+                $("#bt" + i).attr('class', '');
+                $("#step" + i).animate({
+                    height: 'hide'
+                });
+
+            }
+        }
+
+    }
+</script>
+<script>
+    function test(parameters) {
+        //alert(parameters.id + "ff");
+        parameters.open();
+    }
+</script>
+<script>
+    function selectedptions() {
+        var nam = $("#numberYear").val();
+        var thang = $("#numberMonth").val();
+
+
+        for (var i = 1; i <= new Date(nam, thang, 0).getDate(); i++) {
+            $("#numberDay").append($('<option>', {
+                value: i,
+                text: "Day " + i
+            }));
+        }
+
+        var nam1 = $("#numberYear1").val();
+        var thang1 = $("#numberMonth1").val();
+
+
+        for (var i = 1; i <= new Date(nam1, thang1, 0).getDate(); i++) {
+            $("#numberDay1").append($('<option>', {
+                value: i,
+                text: "Day " + i
+            }));
+        }
+    }
+
+</script>
+<script>
+    function PurposeChange(number) {
+       
+        $("#typeOf").empty();
+        if ($("#Purpose").val() == 1) {
+            $("#typeOf").append($('<option>', {
+                value: 1,
+                text: 1 + " month single entry"
+            }));
+            $("#typeOf").append($('<option>', {
+                value: 3,
+                text: 3 + " months single entry"
+            }));
+            $("#typeOf").append($('<option>', {
+                value: 1,
+                text: 1 + " month multiple entry"
+            }));
+            $("#typeOf").append($('<option>', {
+                value: 3,
+                text: 3 + " months multiple entry"
+            }));
+        }
+        if ($("#Purpose").val() == 2) {
+            $("#typeOf").append($('<option>', {
+                value: 1,
+                text: 1+ " month single entry"
+            }));
+            $("#typeOf").append($('<option>', {
+                value: 3,
+                text: 3+ " months single entry"
+            }));
+            $("#typeOf").append($('<option>', {
+                value: 3,
+                text: 3 + " months multiple entry"
+            }));
+            $("#typeOf").append($('<option>', {
+                value: 6,
+                text:6+ " months multiple entry"
+            }));
+            $("#typeOf").append($('<option>', {
+                value: 1,
+                text: 1 + " year multiple entry"
+            }));
+        }
+
+
+
+        $("#ProcessingTime").empty();
+        if ($("#Purpose").val() == 1) {
+            $("#ProcessingTime").append($('<option>', {
+                value: 2,
+                text:  "Normal (2 working days); "
+            }));
+            $("#ProcessingTime").append($('<option>', {
+                value: 1,
+                text:  "Urgent (1 working day)"
+            }));
+            $("#ProcessingTime").append($('<option>', {
+                value: 4,
+                text: "Super Urgent (4 working hours)"
+            }));
+           
+        }
+        if ($("#Purpose").val() == 2) {
+            $("#ProcessingTime").append($('<option>', {
+                value: 7,
+                text: "Normal (7 working days); "
+            }));
+            $("#ProcessingTime").append($('<option>', {
+                value: 3,
+                text: "Urgent (3 working day)"
+            }));
+            $("#ProcessingTime").append($('<option>', {
+                value: 2,
+                text:"Super Urgent (2 working days)"
+            }));
+            
+        }
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        $("button").snackbar("show");
+        $("button").snackbar("hide");
+        $("button").snackbar("toggle");
+        //Steps(1);
+        $("#Purpose").onchange(function() {
+            alert("dd");
+            //alert($("#typeOf").text());
+        });
+    });
+</script>
+<script >
+  $(document).ready(function() {
+    
+  })
+</script>

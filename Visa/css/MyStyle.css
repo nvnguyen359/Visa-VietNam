@@ -1,0 +1,74 @@
+﻿
+.center-text {
+    text-align: center;
+      font-weight: bold;
+    -ms-text-shadow: 1px 1px 1px #e7e3e3;
+    text-shadow: 1px 1px 1px #e7e3e3;
+   
+}
+.hand{ cursor:pointer;}
+
+.center-element{
+     display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.boder {
+    border: 1px;
+   
+    background: ghostwhite;
+    border-color: green;
+    border-radius: 5px;
+    margin-bottom: 1px;
+  
+  
+}
+.default-Violet {
+    background-color: #9c27b0;
+    color: #ffffff;
+}
+.boder-panding {
+   
+     border-style: solid;
+    border-width: 1px;
+     border-radius: 5px;
+    border-color: purple;
+    margin-bottom: 1px;
+    padding-left: 2px;padding-right: 2px;
+}
+.content {
+  
+  top: 0px;
+  left: 0;
+  position: fixed;
+  margin-left: 0px;
+  margin-right: 0px;
+  right: 0;
+  z-index: 2;
+  padding:0px;
+}
+.material-icons.md-12 { font-size: 12px; }
+.material-icons.md-em { font-size: 1em; }
+.background-image {
+  background-image: url('/Image/ngam-anh-hoa-phong-lan-dep-da-sac-mau-chup-can-canh-day-kieu-sa-6.jpg');
+  background-size: cover;
+  display: block;
+    background-origin: inherit;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+  height: 800px;
+  left: 0;
+  position:absolute;
+  right: 0;
+  z-index: 1;
+   background-position: center;
+   
+    width: 100%;
+    height: 100%;
+}
+#Example_F {
+height: 100%;
+width: 70px;
+-moz-border-radius: 35px;
+border-radius: 35px;
+}

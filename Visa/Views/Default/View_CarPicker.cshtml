@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    @{
+        var list = ViewBag.view_car as List<CARPICKUP>;
+     
+        if (list != null)
+        {
+            //dssanbay = (List<string>)list.Select(k => k.sanBay).Distinct();
+            <div class="row">
+                @foreach (var w in list.Select(k => k.sanBay).Distinct())
+                {
+                    <div class="col-md-4">
+                        <div class="panel panel-info">
+                            <div class="panel-heading h2">
+                                <div class="panel-title row"><i class="col-md-2 col-xs-2 material-icons hidden-xs">room</i><i class="col-md-10 col-xs-10 center-text">@w</i></div>
+                            </div>
+                            <div class="panel-body">
+                                @{
+                                    int i = 0;
+                                    foreach (var e in list.FindAll(h => h.sanBay.Equals(w)))
+                                    {
+                                        i++;
+                                        if (i % 2 == 0)
+                                        {
+                                            <div class="row">
+                                                <h5 class="col-md-6 col-xs-6 col-sm-6">@e.choNgoi</h5>
+                                                <h5 class="col-md-6 col-xs-6 col-sm-6">@e.donGia &nbsp; @e.dvTien</h5>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="row" style="background: gainsboro">
+                                                <h5 class="col-md-6 col-xs-6 col-sm-6">@e.choNgoi</h5>
+                                                <h5 class="col-md-6 col-xs-6 col-sm-6">@e.donGia &nbsp; @e.dvTien</h5>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+
+    }
+</div>
+
+</body>
+</html>

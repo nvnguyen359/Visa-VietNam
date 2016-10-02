@@ -1,0 +1,364 @@
+﻿@model THANHVIEN
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.js"></script>
+    
+</head>
+<body>
+@{
+    var date = DateTime.Today.AddMonths(5);
+    var t0 = "";
+    var ng = "";
+    if (date.Month < 10)
+    {
+        t0 = "0";
+    }
+    if (date.Day < 10)
+    {
+        ng = "0";
+    }
+    var ngay = string.Format("{0}-{3}{1}-{4}{2}", date.Year, date.Month, date.Day, t0, ng);
+}
+<div class="container-fluid" style="background: white">
+    <div class="row">
+        <div style="padding-left: 5px; padding-right: 5px; background: white">
+            <ul class="nav nav-wizard form-horizontal">
+                <li id="bt0" style="width: 120px">
+                    <a href="#" id="btn0" onclick=" Steps(1) " class="hidden"> 1 Visa Options</a>
+                </li>
+                <li id="bt1">
+                    <a href="/Default/Index" id="btn1"  class="btn-default">Step 1 </a>
+                </li>
+
+                <li id="bt2" class="active">
+                    <a href="#" id="btn2" class="btn-defaul">Step 2 </a>
+                </li>
+
+                <li id="bt3d" class="hidden">
+                    <a href="#" id="btn3" class="btn-default disabled">Step 3 </a>
+                </li>
+
+                <li id="bt3f" class="">
+                    <a href="#"  class="btn-default hidden">Step 3 </a>
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+</div>
+   
+@{
+    var note = ViewBag.note as List<NOTE>;
+    
+    var passport = note.FirstOrDefault(j => j.id.Equals(4)).note1;
+    var passportExitdate = note.FirstOrDefault(j => j.id.Equals(5)).note1;
+
+}
+
+<div  id="steps2s">
+    <div class="row" id="divShow">
+        <div class="col-md-6 container-fluid">
+            @using (Html.BeginForm("AddThanhVien", "Default", FormMethod.Post, new { id = "frormAdd" }))
+            {
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            APPLICANT &nbsp;<b class="badge">@(ViewBag.sokhachj)</b> &nbsp;INFORMATION
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="margin-top: -25px">
+                            <div class="form-group col-md-6" style="margin-top: -1px">
+                                <label class="control-label" for="fullname2">Fullname</label>
+                                @*<input class="form-control " name="fullname2"  id="fullname2" type="text" style="height: 35px;" placeholder="Passport Name ">*@
+                                @Html.TextBoxFor(model => model.fullName, null, new { @style = "height: 35px", @class = "form-control", @id = "fullname2", @required = "required", placeholder = "Passport Name " })
+                            </div>
+                            <div class="form-group col-md-6" style="margin-top: -1px">
+                                <label class="control-label " for="gender2"> Gender</label>
+                                @*<select class="form-control" id="gender2"  style="height: 35px;">
+
+                                        <option disabled="" selected="">Select</option>
+
+
+
+                                    </select>*@
+                                @Html.DropDownListFor(model => model.gender, new List<SelectListItem>(), "Select", new { @style = "height: 35px", @class = "form-control", @id = "gender2", @required = "required" })
+                            </div>
+                            <div class="form-group col-md-6" style="margin-top: -1px">
+                                <label class="control-label " for="nationality2"> Nationality</label>
+
+                                @Html.DropDownListFor(model => model.nationality, new List<SelectListItem>(), "Select", new { @style = "height: 35px", @class = "form-control", @id = "nationality2", @required = "required",onchange="SpecalQt(this)" })
+                            </div>
+                            <div class="form-group col-md-6" style="margin-top: -1px">
+                                <label class="control-label " for="sinhnhat2"> Date of birth</label>
+                                @Html.TextBoxFor(model => model.pateOfBirth, null, new { @style = "height: 35px", @class = "form-control", @id = "sinhnhat2", @type = "date", @required = "required" })
+                            </div>
+                            <div class="form-group col-md-6" style="margin-top: -1px">
+                                <label class="control-label" for="sopassport2">
+                                    Passport Number
+                                    &nbsp;<i class="glyphicon glyphicon-question-sign text-info" data-toggle="tooltip" data-placement="bottom" title="@passport"></i>
+                                </label>
+                                @*<input class="form-control" id="sopassport2" onchange="PassNumber(this)" type="number" style="height: 35px" placeholder="Passport Number">*@
+                                @Html.TextBoxFor(model => model.passPortNumber, null, new { @style = "height: 35px", @class = "form-control", placeholder = "Passport Number", @id = "sopassport2", @type = "text", @required = "required" })
+                            </div>
+                            <div class="form-group  col-md-6" style="margin-top: -1px">
+                                <label class="control-label" for="ngayhethanpass2">
+                                    Passport expiry date
+
+                                    &nbsp;<i class="glyphicon glyphicon-question-sign text-info" data-toggle="tooltip" data-placement="auto"
+                                             title="@passportExitdate"></i>
+                                </label>
+                                @Html.TextBoxFor(model => model.passportexpireddate, null, new { @style = "height: 35px", @class = "form-control", @id = "ngayhethanpass2", @type = "date", @required = "required", min = @ngay })
+
+                            </div>
+                        </div>
+                        @*<p class="text-info hgf" ></p>
+                            <p class="text-info hgf1"></p>*@
+                        @*@Html.DisplayFor(model => model.ngay,DateTime.Now.ToShortDateString())
+                            @Html.DisplayFor(model => model.idTrDoan,(string)@ViewBag.idTruongdoan)*@
+                        @*<div  id="soThanhVien" class="hidden"> @Session["sothanhvien"].ToString()</div>
+                        <p  id="soDem" class="hidden">@ViewBag.sokhachj</p>
+                        <label class="hidden" id="idThanhVien"></label>*@
+                        @*@Html.HiddenFor(model=>model.id)*@
+                        <div class="row">
+                            <button type="submit" class="btn btn-inverse btn-fab btn-fab-mini" id="btsubmit2" ><i class="material-icons">add</i></button>
+                            <p class="btn btn-warning btn-fab btn-fab-mini" id="btsubmit3" onclick="UpdateThanhViens()">
+                                <i class="material-icons">edit</i>
+                            </p>
+                            <p class="btn btn-danger btn-fab btn-fab-mini" id="btsubmit4" onclick="DeleteTv()">
+                                <i class="material-icons">delete</i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-6 container-fluid">
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center" id="fullname3">Panel primary</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="container-fluid" style="margin-top: 13px">
+                        <div class="row">
+                            <h5 class="col-md-6 col-xs-6 col-sm-6">Email</h5>
+                            <h5 class="text-danger col-md-6 col-xs-6 col-sm-6" id="dateOfbirth"></h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="col-md-6 col-xs-6 col-sm-6">Total</h5>
+                            <h5 class="text-primary text-primary col-md-6 col-xs-6 col-sm-6" id="numberofVisa1"></h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="col-md-6 col-xs-6 col-sm-6">Type Of Visa</h5>
+                            <h5 class="text-primary text-primary col-md-6 col-xs-6 col-sm-6" id="typeOfvisa"></h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="col-md-6 col-xs-6 col-sm-6">Port Of arrival</h5>
+                            <h5 class="text-primary text-primary col-md-6 col-xs-6 col-sm-6" id="portOf"></h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="col-md-6 col-xs-6 col-sm-6">Porocessing Time</h5>
+                            <h5 class="text-primary text-primary col-md-6 col-xs-6 col-sm-6" id="protime"></h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="col-md-6 col-xs-6 col-sm-6">Arrival Date</h5>
+                            <h5 class="text-primary text-primary col-md-6 col-xs-6 col-sm-6" id="arrivalDate"></h5>
+                        </div>
+                        <div class="row">
+                            <h5 class="col-md-6 col-xs-6 col-sm-6">Exit Date</h5>
+                            <h5 class="text-primary text-primary col-md-6 col-xs-6 col-sm-6" id="exitDate"></h5>
+                        </div>
+                        @*<table class="table table-hover">
+
+                                <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td ></td>
+
+                                </tr>
+                                <tr>
+                                    <td><h6>Total</h6></td>
+                                    <td></td>
+
+                                </tr>
+                                <tr>
+                                    <td><h6>Type Of Visa</h6></td>
+                                    <td><h6 id="typeOfvisa"></h6></td>
+
+                                </tr>
+                                <tr>
+                                    <td><h6>Port Of arrival</h6></td>
+                                    <td><h6 id="portOf"> </h6></td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Porocessing Time</h6></td>
+                                    <td><h6 id="protime"> </h6></td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Arrival Date</h6></td>
+                                    <td><h6 id="arrivalDate"> </h6></td>
+                                </tr>
+                                <tr>
+                                    <td><h6>Exit Date</h6></td>
+                                    <td><h6 id="exitDate"></h6></td>
+                                </tr>
+                                </tbody>
+                            </table>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<ul class="pager">
+    <li class="previous"><a href="javascript:void(0)">← Older</a></li>
+    <li class="next disabled"><a class="withripple" href="javascript:void(0)">Newer →</a></li>
+</ul>
+<p id="dem"></p>
+    
+<div class="hg" id="ths">
+    @Html.Partial("DanhSachSteps2s")
+</div>
+<div class="hg1" id="ths1">
+    @Html.Partial("Steps3")
+</div>
+</body>
+</html>
+<div class="modal" id="modal_qtich">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid ghichuQt" ></div>
+                <p class="container-fluid text-danger payGia center-text"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="SaveMember(this)">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="SaveMember(this)">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var  dem= parseInt($(".badge").text());;
+    function DsThu() {
+        var div = $("#ths").html();
+        
+        dem = dem + 1;
+        var url = "/Default/DanhSachSteps2s";
+        $.ajax({
+            url: url,
+         
+            datatype: "JSON",
+            type: "POST",
+            success: function (data) {
+                //$("#dem").text(data);
+                $("#ths").load(location.href + " #ths>*", "");
+            }
+        });
+      
+        //$("#ths").html(div);
+    }
+</script>
+<script>
+    var dem = 0;
+    $(document)
+        .ready(function() {
+            $("#frormAdd")
+                .submit(function() {
+                    var form = this;
+                    setTimeout(function() {
+                            $(':submit', form).attr('disabled', true);
+                        },
+                        50);
+
+                    setTimeout(function() {
+                            $(':submit', form).removeAttr('disabled');
+                        },
+                        1000);
+                });
+            
+            var url = "/Default/ItemTruongdoan";
+            $.ajax({
+                url: url,
+                datatype: "JSON",
+                type: "POST",
+                success: function(data) {
+                    $("#idThanhVien").html(data.id);
+                    $("#fullname3").html(data.fullname.toUpperCase());
+                    $("#dateOfbirth").append(data.email);
+                    $("#numberofVisa1").append(data.numberofapplicant);
+                    $("#typeOfvisa").append(data.typeofvisa);
+                    $("#portOf").append(data.arrivalPort);
+                    $("#protime").append(data.processingtime);
+                    $("#arrivalDate").append(new Date(parseInt(data.fromdate.substr(6))).toDateString());
+                    $("#exitDate").text(new Date(parseInt(data.exitdate.substr(6))).toDateString());
+                }
+            });
+            loadGender();
+            loadQuoctich();
+            //setTimeout(function () { document.form.submit()}, 500);
+            $("#btsubmit2")
+                .hover(function() {
+
+
+                });
+            //AutoClick();
+        });
+</script>
+<script>
+    function AutoClick() {
+        //alert("");
+        //jQuery.validator.setDefaults({
+        //    debug: true,
+        //    success: "valid"
+        //});
+        //var form = $("#frormAdd");
+        ;
+        $("#frormAdd").validate();
+
+        // show message on invalid submission
+        $("#frormAdd").on("invalid-form.validate", function (event, validator) {
+            //var errors = validator.numberOfInvalids();
+            //if (errors) {
+            //    alert('There is a problem with ' + errors + ' fields.');
+            //}
+        });
+
+        // prevent double click form submission
+        $("#frormAdd").submit(function () {
+            if ($(this).valid()) {
+                $(':submit', this).attr('disabled', 'disabled');
+            }
+        });
+        $("#ths").load(location.href + " #ths>*", "");
+    }
+
+</script>
+<script>
+    $.validate({
+        lang: 'es'
+    });
+</script>
+<script>
+
+    $(document).ready(function () {
+        $("#btsubmit2").show();
+        ktshowHideAdd();
+        $(".tbPaypals").hide();
+        setInterval(function () {
+            SaveData();
+
+        });
+    });
+</script>

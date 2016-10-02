@@ -1,0 +1,74 @@
+﻿.nfontsize:hover {
+   
+    color: blueviolet
+}
+.violetblue-text {
+    color: blueviolet
+
+}
+.infor-text {
+    color: #9C27B0;
+}
+.infor-back {
+    background: #9C27B0;
+}
+.dange-text {
+    color: #E51C23;
+}
+.dange-back {
+    background: #E51C23;
+}
+.primary-text {
+    color: #2196F3
+}
+.primary-back {
+    background: #2196F3
+}
+.stepRow:hover {
+
+    
+    background: rgba(0, 0, 0, 0.05);
+
+     
+}
+.panel-heading {
+    background: grey
+}
+.hj2{color: white}
+.headinfor {
+    background: #9C27B0;
+    color: whitesmoke;
+}
+.stepRow:hover .panel-heading {
+    background:  #9C27B0;
+}
+.headerstep2 {
+    background: red;
+}
+.stepRow:hover .hj2 {
+    font-size: 1.2em;
+    transition: font-size 1s;
+}
+
+.btnEditItem{ opacity: 0;background: whitesmoke}
+.stepRow:hover .btnEditItem {
+    background: transparent;
+    -ms-opacity:1;
+    opacity: 1;
+    animation-name: showbtn;
+      
+}
+.stepRow:hover .btEditaa {
+    height: 70px;
+    width: 70px
+}
+ @keyframes phongto{
+      0%{ height: 150%;width: 150%}
+      }
+@keyframes showbtn {
+    0%   {opacity: 0;}
+    25%  {opacity: 0.23;}
+    50%  {opacity: 0.50;}
+    100% {opacity: 1;}
+}
+

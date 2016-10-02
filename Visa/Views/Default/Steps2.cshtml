@@ -1,0 +1,460 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    
+    <title>.</title>
+</head>
+
+<body >
+    <ul class="pager">
+        <li class="previous"><a class="btn btn-inverse left" href="/Default/index/2"><span class="glyphicon glyphicon-menu-left"></span>Step 2</a></li>
+        <li class="next"><a class="btn btn-danger" data-toggle="modal" data-target="#myNext3" href="">Step 3 <span class="glyphicon glyphicon-menu-right"></span></a></li>
+    </ul>
+    @*<div class="img-rounded" style="margin: 5px;color: black" id="thongbao">@ViewBag.songuoi</div>*@
+<div style="padding-left: 2px; padding-right: 2px">
+@{
+    Random r = new Random();
+    for (int i = 1; i < 10; i++)
+    {
+        var tr = "k" + @i;
+        <div class="row" >
+            <div class="stepRow">
+                <div class="col-md-12  col-sm-12  col-xs-12" >
+                    <div class="container-fluid panel-heading hj1" >
+                        <h3 class="panel-title hj2" id="nae@i">APPLICANT @i INFORMATION</h3>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12  col-xs-12" onmouseover="SaveData()" style="background: white;margin-bottom: 5px">
+                    <div class="container-fluid col-sm-5  col-md-5   col-xs-12" style="z-index: 1000; margin-top: -33px;">
+                        <div class="row">
+                            <div class="col-md-5 container" style="">
+                                <div class="form-group">
+                                    <label class="control-label" for="tbn-appliacant" >Fullname</label>
+                                    <input class="form-control " name="fname[@i]"   onkeyup="FullName(@i)" id="tbn-appliacant" type="text" style="height: 35px;" placeholder="Passport Name ">
+                                </div>
+                            </div>
+                            <div class="col-md-4 container">
+                                <div class="form-group">
+                                    <label class="control-label" for="tbn-Nationality"> Nationality</label>
+                                    <select class="form-control" onchange="Nationa(this)" id="tbn-Nationality" name="nationality[]" style="height: 35px;" title="Select">
+
+                                        <option value="3+AF-Afghanistan" _free_visa="0" _new_free="no" disabled="" selected="">Select</option>
+
+                                        <option value="3+AF-Afghanistan" _free_visa="0" _new_free="no">Afghanistan</option>
+                                        <option value="4+AL-Albania" _free_visa="0" _new_free="no">Albania</option>
+                                        <option value="5+DZ-Algeria" _free_visa="0" _new_free="no">Algeria</option>
+                                        <option value="6+AS-American Samoa" _free_visa="0" _new_free="no">American Samoa</option>
+                                        <option value="7+AR-Argentina" _free_visa="0" _new_free="no">Argentina</option>
+                                        <option value="235+AM-Armenia" _free_visa="0" _new_free="no">Armenia</option>
+                                        <option value="9+AU-Australia" _free_visa="0" _new_free="no">Australia</option>
+                                        <option value="8+AT-Austria" _free_visa="0" _new_free="no">Austria</option>
+                                        <option value="10+AZ-Azerbaijan" _free_visa="0" _new_free="no">Azerbaijan</option>
+                                        <option value="11+BB-Barbados" _free_visa="0" _new_free="no">Barbados</option>
+                                        <option value="12+BY-Belarus" _free_visa="15" _new_free="no">Belarus</option>
+                                        <option value="13+BE-Belgium" _free_visa="0" _new_free="no">Belgium</option>
+                                        <option value="14+BZ-Belize" _free_visa="0" _new_free="no">Belize</option>
+                                        <option value="15+BJ-Benin" _free_visa="0" _new_free="no">Benin</option>
+                                        <option value="16+BM-Bermuda" _free_visa="0" _new_free="no">Bermuda</option>
+                                        <option value="17+BT-Bhutan" _free_visa="0" _new_free="no">Bhutan</option>
+                                        <option value="18+BO-Bolivia" _free_visa="0" _new_free="no">Bolivia</option>
+                                        <option value="232+BA-Bosnia&amp; Herzegonia" _free_visa="0" _new_free="no">Bosnia&amp; Herzegonia</option>
+                                        <option value="19+BW-Botswana" _free_visa="0" _new_free="no">Botswana</option>
+                                        <option value="20+BV-Bouvet" _free_visa="0" _new_free="no">Bouvet</option>
+                                        <option value="21+BR-Brazil" _free_visa="0" _new_free="no">Brazil</option>
+                                        <option value="22+BN-Brunei Darussalam" _free_visa="14" _new_free="no">Brunei Darussalam</option>
+                                        <option value="23+BG-Bulgaria" _free_visa="0" _new_free="no">Bulgaria</option>
+                                        <option value="24+BF-BurkinaFaso" _free_visa="0" _new_free="no">BurkinaFaso</option>
+                                        <option value="25+BI-Burundi" _free_visa="0" _new_free="no">Burundi</option>
+                                        <option value="27+KH-Cambodia" _free_visa="30" _new_free="no">Cambodia</option>
+                                        <option value="28+CM-Cameroon" _free_visa="0" _new_free="no">Cameroon</option>
+                                        <option value="29+CA-Canada" _free_visa="0" _new_free="no">Canada</option>
+                                        <option value="30+CV-CapeVerde" _free_visa="0" _new_free="no">CapeVerde</option>
+                                        <option value="31+KY-Cayman Islands" _free_visa="0" _new_free="no">Cayman Islands</option>
+                                        <option value="32+CF-Central African" _free_visa="0" _new_free="no">Central African</option>
+                                        <option value="33+TD-Chad" _free_visa="0" _new_free="no">Chad</option>
+                                        <option value="34+CL-Chile" _free_visa="0" _new_free="no">Chile</option>
+                                        <option value="35+CN-China" _free_visa="0" _new_free="no">China</option>
+                                        <option value="36+CO-Colombia" _free_visa="0" _new_free="no">Colombia</option>
+                                        <option value="37+KM-Comoros" _free_visa="0" _new_free="no">Comoros</option>
+                                        <option value="38+CD-Congo" _free_visa="0" _new_free="no">Congo</option>
+                                        <option value="39+CK-Cook Islands" _free_visa="0" _new_free="no">Cook Islands</option>
+                                        <option value="40+CR-CostaRica" _free_visa="0" _new_free="no">CostaRica</option>
+                                        <option value="41+CI-Coted Ivoire" _free_visa="0" _new_free="no">Coted Ivoire</option>
+                                        <option value="42+HR-Croatia" _free_visa="0" _new_free="no">Croatia</option>
+                                        <option value="43+CU-Cuba" _free_visa="0" _new_free="no">Cuba</option>
+                                        <option value="44+CY-Cyprus" _free_visa="0" _new_free="no">Cyprus</option>
+                                        <option value="45+CZ-Czech" _free_visa="0" _new_free="no">Czech</option>
+                                        <option value="47+DK-Denmark" _free_visa="15" _new_free="no">Denmark</option>
+                                        <option value="48+DJ-Djibouti" _free_visa="0" _new_free="no">Djibouti</option>
+                                        <option value="49+DM-Dominica" _free_visa="0" _new_free="no">Dominica</option>
+                                        <option value="50+DM-Dominican" _free_visa="0" _new_free="no">Dominican</option>
+                                        <option value="51+TL-EastTimor" _free_visa="0" _new_free="no">EastTimor</option>
+                                        <option value="52+EC-Ecuador" _free_visa="0" _new_free="no">Ecuador</option>
+                                        <option value="53+EG-Egypt" _free_visa="0" _new_free="no">Egypt</option>
+                                        <option value="54+SV-ElSalvador" _free_visa="0" _new_free="no">ElSalvador</option>
+                                        <option value="55+GB-England" _free_visa="15" _new_free="no">England</option>
+                                        <option value="56+GQ-Equatorial Guinea" _free_visa="0" _new_free="no">Equatorial Guinea</option>
+                                        <option value="57+ER-Eritrea" _free_visa="0" _new_free="no">Eritrea</option>
+                                        <option value="58+EE-Estonia" _free_visa="0" _new_free="no">Estonia</option>
+                                        <option value="59+ET-Ethiopia" _free_visa="0" _new_free="no">Ethiopia</option>
+                                        <option value="60+FK-Falkland" _free_visa="0" _new_free="no">Falkland</option>
+                                        <option value="61+FO-Faroe" _free_visa="0" _new_free="no">Faroe</option>
+                                        <option value="62+FJ-Fiji" _free_visa="0" _new_free="no">Fiji</option>
+                                        <option value="63+FI-Finland" _free_visa="15" _new_free="no">Finland</option>
+                                        <option value="64+FR-France" _free_visa="15" _new_free="no">France</option>
+                                        <option value="65+GA-Gabon" _free_visa="0" _new_free="no">Gabon</option>
+                                        <option value="66+GM-Gambia" _free_visa="0" _new_free="no">Gambia</option>
+                                        <option value="67+GE-Georgia" _free_visa="0" _new_free="no">Georgia</option>
+                                        <option value="68+DE-Germany" _free_visa="15" _new_free="no">Germany</option>
+                                        <option value="69+GH-Ghana" _free_visa="0" _new_free="no">Ghana</option>
+                                        <option value="70+GI-Gibraltar" _free_visa="0" _new_free="no">Gibraltar</option>
+                                        <option value="71+GB-Great Britain" _free_visa="15" _new_free="no">Great Britain</option>
+                                        <option value="72+GR-Greece" _free_visa="0" _new_free="no">Greece</option>
+                                        <option value="73+GL-Greenland" _free_visa="0" _new_free="no">Greenland</option>
+                                        <option value="74+GD-Grenada" _free_visa="0" _new_free="no">Grenada</option>
+                                        <option value="75+GP-Guadeloupe" _free_visa="0" _new_free="no">Guadeloupe</option>
+                                        <option value="76+GU-Guam" _free_visa="0" _new_free="no">Guam</option>
+                                        <option value="77+GT-Guatemela" _free_visa="0" _new_free="no">Guatemela</option>
+                                        <option value="78+GG-Guernsey" _free_visa="0" _new_free="no">Guernsey</option>
+                                        <option value="79+GY-Guiana" _free_visa="0" _new_free="no">Guiana</option>
+                                        <option value="80+GN-Guinea" _free_visa="0" _new_free="no">Guinea</option>
+                                        <option value="82+GY-Guyana" _free_visa="0" _new_free="no">Guyana</option>
+                                        <option value="83+HT-Haiti" _free_visa="0" _new_free="no">Haiti</option>
+                                        <option value="84+HM-Heard" _free_visa="0" _new_free="no">Heard</option>
+                                        <option value="85+HN-Honduras" _free_visa="0" _new_free="no">Honduras</option>
+                                        <option value="86+HK-HongKong" _free_visa="0" _new_free="no">HongKong</option>
+                                        <option value="87+HU-Hungary" _free_visa="0" _new_free="no">Hungary</option>
+                                        <option value="88+IS-Iceland" _free_visa="0" _new_free="no">Iceland</option>
+                                        <option value="89+IN-India" _free_visa="0" _new_free="no">India</option>
+                                        <option value="90+ID-Indonesia" _free_visa="30" _new_free="no">Indonesia</option>
+                                        <option value="93+IE-Ireland" _free_visa="0" _new_free="no">Ireland</option>
+                                        <option value="94+IM-IsleOfMan" _free_visa="0" _new_free="no">IsleOfMan</option>
+                                        <option value="95+IL-Israel" _free_visa="0" _new_free="no">Israel</option>
+                                        <option value="96+IT-Italy" _free_visa="15" _new_free="no">Italy</option>
+                                        <option value="97+JM-Jamaica" _free_visa="0" _new_free="no">Jamaica</option>
+                                        <option value="98+JP-Japan" _free_visa="15" _new_free="no">Japan</option>
+                                        <option value="99+JE-Jersey" _free_visa="0" _new_free="no">Jersey</option>
+                                        <option value="101+KZ-Kazakhstan" _free_visa="0" _new_free="no">Kazakhstan</option>
+                                        <option value="102+KE-Kenya" _free_visa="0" _new_free="no">Kenya</option>
+                                        <option value="103+KI-Kiribati" _free_visa="0" _new_free="no">Kiribati</option>
+                                        <option value="106+KW-Kuwait" _free_visa="0" _new_free="no">Kuwait</option>
+                                        <option value="107+KG-Kyrgyzstan" _free_visa="0" _new_free="no">Kyrgyzstan</option>
+                                        <option value="108+LA-Laos" _free_visa="30" _new_free="no">Laos</option>
+                                        <option value="109+LV-Latvia" _free_visa="0" _new_free="no">Latvia</option>
+                                        <option value="111+LS-Lesotho" _free_visa="0" _new_free="no">Lesotho</option>
+                                        <option value="112+LR-Liberia" _free_visa="0" _new_free="no">Liberia</option>
+                                        <option value="113+LY-Libya" _free_visa="0" _new_free="no">Libya</option>
+                                        <option value="114+LI-Liechtenstein" _free_visa="0" _new_free="no">Liechtenstein</option>
+                                        <option value="115+LT-Lithuania" _free_visa="0" _new_free="no">Lithuania</option>
+                                        <option value="116+LU-Luxembourg" _free_visa="0" _new_free="no">Luxembourg</option>
+                                        <option value="117+MO-Macau" _free_visa="0" _new_free="no">Macau</option>
+                                        <option value="118+MK-Macedonia" _free_visa="0" _new_free="no">Macedonia</option>
+                                        <option value="119+MG-Madagascar" _free_visa="0" _new_free="no">Madagascar</option>
+                                        <option value="121+MY-Malaysia" _free_visa="30" _new_free="no">Malaysia</option>
+                                        <option value="122+MV-Maldives" _free_visa="0" _new_free="no">Maldives</option>
+                                        <option value="124+MT-Malta" _free_visa="0" _new_free="no">Malta</option>
+                                        <option value="125+MP-Mariana" _free_visa="0" _new_free="no">Mariana</option>
+                                        <option value="126+MH-Marshall" _free_visa="0" _new_free="no">Marshall</option>
+                                        <option value="127+MQ-Martinique" _free_visa="0" _new_free="no">Martinique</option>
+                                        <option value="128+MR-Mauritania" _free_visa="0" _new_free="no">Mauritania</option>
+                                        <option value="129+MU-Mauritius" _free_visa="0" _new_free="no">Mauritius</option>
+                                        <option value="130+YT-Mayotte" _free_visa="0" _new_free="no">Mayotte</option>
+                                        <option value="131+MX-Mexico" _free_visa="0" _new_free="no">Mexico</option>
+                                        <option value="132+FM-Micronesia" _free_visa="0" _new_free="no">Micronesia</option>
+                                        <option value="133+MD-Moldova" _free_visa="0" _new_free="no">Moldova</option>
+                                        <option value="134+MC-Monaco" _free_visa="0" _new_free="no">Monaco</option>
+                                        <option value="135+MN-Mongolia" _free_visa="0" _new_free="no">Mongolia</option>
+                                        <option value="230+ME-Montenegro" _free_visa="0" _new_free="no">Montenegro</option>
+                                        <option value="136+MS-Montserrat" _free_visa="0" _new_free="no">Montserrat</option>
+                                        <option value="137+MA-Morocco" _free_visa="0" _new_free="no">Morocco</option>
+                                        <option value="138+MZ-Mozambique" _free_visa="0" _new_free="no">Mozambique</option>
+                                        <option value="139+MM-Myanmar" _free_visa="14" _new_free="no">Myanmar</option>
+                                        <option value="140+NA-Namibia" _free_visa="0" _new_free="no">Namibia</option>
+                                        <option value="141+NR-Nauru" _free_visa="0" _new_free="no">Nauru</option>
+                                        <option value="142+NP-Nepal" _free_visa="0" _new_free="no">Nepal</option>
+                                        <option value="143+NL-Netherlands" _free_visa="0" _new_free="no">Netherlands</option>
+                                        <option value="144+NT-Neutral Zone" _free_visa="0" _new_free="no">Neutral Zone</option>
+                                        <option value="145+NC-New Caledonia" _free_visa="0" _new_free="no">New Caledonia</option>
+                                        <option value="146+NZ-NewZealand" _free_visa="0" _new_free="no">NewZealand</option>
+                                        <option value="147+NI-Nicaragua" _free_visa="0" _new_free="no">Nicaragua</option>
+                                        <option value="148+NE-Niger" _free_visa="0" _new_free="no">Niger</option>
+                                        <option value="150+NU-Niue" _free_visa="0" _new_free="no">Niue</option>
+                                        <option value="151+NF-Norfolk Island" _free_visa="0" _new_free="no">Norfolk Island</option>
+                                        <option value="105+KP-North Korea" _free_visa="0" _new_free="no">North Korea</option>
+                                        <option value="152+IE-Northern Ireland" _free_visa="15" _new_free="no">Northern Ireland</option>
+                                        <option value="153+NO-Norway" _free_visa="15" _new_free="no">Norway</option>
+                                        <option value="154+OM-Oman" _free_visa="0" _new_free="no">Oman</option>
+                                        <option value="233+PK-Pakistan" _free_visa="0" _new_free="no">Pakistan</option>
+                                        <option value="156+PW-Palau" _free_visa="0" _new_free="no">Palau</option>
+                                        <option value="157+PA-Panama" _free_visa="0" _new_free="no">Panama</option>
+                                        <option value="158+PG-Papua New Guinea" _free_visa="0" _new_free="no">Papua New Guinea</option>
+                                        <option value="159+PY-Paraguay" _free_visa="0" _new_free="no">Paraguay</option>
+                                        <option value="160+PE-Peru" _free_visa="0" _new_free="no">Peru</option>
+                                        <option value="161+PH-Philippines" _free_visa="21" _new_free="no">Philippines</option>
+                                        <option value="162+PN-Pitcairn" _free_visa="0" _new_free="no">Pitcairn</option>
+                                        <option value="163+PL-Poland" _free_visa="0" _new_free="no">Poland</option>
+                                        <option value="164+PF-Polynesia" _free_visa="0" _new_free="no">Polynesia</option>
+                                        <option value="165+PT-Portugal" _free_visa="0" _new_free="no">Portugal</option>
+                                        <option value="166+PR-Puerto Rico" _free_visa="0" _new_free="no">Puerto Rico</option>
+                                        <option value="167+QA-Qatar" _free_visa="0" _new_free="no">Qatar</option>
+                                        <option value="168+RE-Reunion" _free_visa="0" _new_free="no">Reunion</option>
+                                        <option value="169+RO-Romania" _free_visa="0" _new_free="no">Romania</option>
+                                        <option value="170+RU-Russian" _free_visa="15" _new_free="no">Russian</option>
+                                        <option value="171+RW-Rwanda" _free_visa="0" _new_free="no">Rwanda</option>
+                                        <option value="172+SH-Saint Helena" _free_visa="0" _new_free="no">Saint Helena</option>
+                                        <option value="173+KN-Saint Kitts" _free_visa="0" _new_free="no">Saint Kitts</option>
+                                        <option value="174+LC-Saint Lucia" _free_visa="0" _new_free="no">Saint Lucia</option>
+                                        <option value="175+PM-Saint Pierre" _free_visa="0" _new_free="no">Saint Pierre</option>
+                                        <option value="176+VC-Saint Vincent" _free_visa="0" _new_free="no">Saint Vincent</option>
+                                        <option value="177+WS-Samoa" _free_visa="0" _new_free="no">Samoa</option>
+                                        <option value="178+SM-San Marino" _free_visa="0" _new_free="no">San Marino</option>
+                                        <option value="239+SA-Saudi Arabia" _free_visa="0" _new_free="no">Saudi Arabia</option>
+                                        <option value="180+GB-Scotland" _free_visa="0" _new_free="no">Scotland</option>
+                                        <option value="181+SN-Senegal" _free_visa="0" _new_free="no">Senegal</option>
+                                        <option value="231+RS-Serbia" _free_visa="0" _new_free="no">Serbia</option>
+                                        <option value="182+SC-Seychelles" _free_visa="0" _new_free="no">Seychelles</option>
+                                        <option value="183+SL-Sierra Leone" _free_visa="0" _new_free="no">Sierra Leone</option>
+                                        <option value="184+SG-Singapore" _free_visa="30" _new_free="no">Singapore</option>
+                                        <option value="185+SK-Slovakia" _free_visa="0" _new_free="no">Slovakia</option>
+                                        <option value="186+SI-Slovenia" _free_visa="0" _new_free="no">Slovenia</option>
+                                        <option value="187+SB-Solomon" _free_visa="0" _new_free="no">Solomon</option>
+                                        <option value="188+SO-Somalia" _free_visa="0" _new_free="no">Somalia</option>
+                                        <option value="189+ZA-South Africa" _free_visa="0" _new_free="no">South Africa</option>
+                                        <option value="190+GS-South Georgia" _free_visa="0" _new_free="no">South Georgia</option>
+                                        <option value="104+KR-South Korea" _free_visa="15" _new_free="no">South Korea</option>
+                                        <option value="191+ES-Spain" _free_visa="15" _new_free="no">Spain</option>
+                                        <option value="193+SD-Sudan" _free_visa="0" _new_free="no">Sudan</option>
+                                        <option value="194+SR-Suriname" _free_visa="0" _new_free="no">Suriname</option>
+                                        <option value="195+SJ-Svalbard" _free_visa="0" _new_free="no">Svalbard</option>
+                                        <option value="196+SZ-Swaziland" _free_visa="0" _new_free="no">Swaziland</option>
+                                        <option value="197+SE-Sweden" _free_visa="15" _new_free="no">Sweden</option>
+                                        <option value="198+CH-Switzerland" _free_visa="0" _new_free="no">Switzerland</option>
+                                        <option value="199+SY-Syrian Arab" _free_visa="0" _new_free="no">Syrian Arab</option>
+                                        <option value="200+TW-Taiwan" _free_visa="0" _new_free="no">Taiwan</option>
+                                        <option value="201+TJ-Tajikista" _free_visa="0" _new_free="no">Tajikista</option>
+                                        <option value="202+TZ-Tanzania" _free_visa="0" _new_free="no">Tanzania</option>
+                                        <option value="203+TH-Thailand" _free_visa="30" _new_free="no">Thailand</option>
+                                        <option value="204+TG-Togo" _free_visa="0" _new_free="no">Togo</option>
+                                        <option value="206+TO-Tonga" _free_visa="0" _new_free="no">Tonga</option>
+                                        <option value="207+TT-Trinidad and Tobago" _free_visa="0" _new_free="no">Trinidad and Tobago</option>
+                                        <option value="209+TR-Turkey" _free_visa="0" _new_free="no">Turkey</option>
+                                        <option value="210+TM-Turkmenistan" _free_visa="0" _new_free="no">Turkmenistan</option>
+                                        <option value="211+TC-Turksand Caicos" _free_visa="0" _new_free="no">Turksand Caicos</option>
+                                        <option value="212+TV-Tuvalu" _free_visa="0" _new_free="no">Tuvalu</option>
+                                        <option value="215+AE-UAE" _free_visa="0" _new_free="no">UAE</option>
+                                        <option value="213+UG-Uganda" _free_visa="0" _new_free="no">Uganda</option>
+                                        <option value="214+UA-Ukraine" _free_visa="0" _new_free="no">Ukraine</option>
+                                        <option value="1+GB-United Kingdom" _free_visa="15" _new_free="no">United Kingdom</option>
+                                        <option value="2+US-United States" _free_visa="0" _new_free="no">United States</option>
+                                        <option value="216+UY-Uruguay" _free_visa="0" _new_free="no">Uruguay</option>
+                                        <option value="217+UZ-Uzbekistan" _free_visa="0" _new_free="no">Uzbekistan</option>
+                                        <option value="218+VU-Vanuatu" _free_visa="0" _new_free="no">Vanuatu</option>
+                                        <option value="219+VA-Vatican" _free_visa="0" _new_free="no">Vatican</option>
+                                        <option value="220+VE-Venezuela" _free_visa="0" _new_free="no">Venezuela</option>
+                                        <option value="221+VN-Vietnam" _free_visa="0" _new_free="no">Vietnam</option>
+                                        <option value="222+VI-Virgin" _free_visa="0" _new_free="no">Virgin</option>
+                                        <option value="237+VG-Virgin Islands, British" _free_visa="0" _new_free="no">Virgin Islands, British</option>
+                                        <option value="236+VI-Virgin Islands, U.S." _free_visa="0" _new_free="no">Virgin Islands, U.S.</option>
+                                        <option value="223+GB-Wales" _free_visa="0" _new_free="no">Wales</option>
+                                        <option value="224+EH-Western Sahara" _free_visa="0" _new_free="no">Western Sahara</option>
+                                        <option value="225+YE-Yemen" _free_visa="0" _new_free="no">Yemen</option>
+                                        <option value="226+MK-Yugoslavia" _free_visa="0" _new_free="no">Yugoslavia</option>
+                                        <option value="228+ZM-Zambia" _free_visa="0" _new_free="no">Zambia</option>
+                                        <option value="229+ZW-Zimbabwe" _free_visa="0" _new_free="no">Zimbabwe</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3  container">
+                                <div class="form-group">
+                                    <label class="control-label " for="tbn-Gender"> Gender</label>
+                                    <select class="form-control" id="tbn-Gender" onchange="Gender(this)" name="nationality[]" style="height: 35px;">
+
+                                        <option disabled="" selected="">Select</option>
+
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid col-sm-7  col-md-7   col-xs-12" style="margin-top: -33px; z-index: 1;">
+                        <div class="row ">
+                            <div class="col-md-4  container">
+                                <div class="form-group">
+                                    <label class="control-label" for="tbn-Dateofbirth"> Date of birth</label>
+                                    <input class="form-control  container-fluid" onchange="Datefbirth(this)" id="tbn-Dateofbirth" type="date" style="height: 35px;">
+                                </div>
+                            </div>
+                           
+                            <div class="col-md-4  container">
+                                <div class="form-group ">
+                                    <label class="control-label" for="tbn-PassportNumber">
+                                        Passport Number
+                                        &nbsp;<i class="glyphicon glyphicon-question-sign text-info" data-toggle="tooltip" data-placement="bottom" title="As exactly shown on applicant's passport"></i>
+                                    </label>
+                                    <input class="form-control" id="tbn-PassportNumber" onchange="PassNumber(this)" type="number" style="height: 35px" placeholder="Passport Number">
+                                    @*<label class="help-block">As exactly shown on applicant's passport</label>*@
+                                </div>
+                            </div>
+                            <div class="col-md-4  container">
+                                <div class="form-group ">
+                                    <label class="control-label" for="tbn-Passportexpirydate">
+                                        Passport expiry date
+
+                                        &nbsp;<i class="glyphicon glyphicon-question-sign text-info" data-toggle="tooltip" data-placement="auto"
+                                                 title="Applicant's passport should be valid for at least 5 months from the arrival date"></i>
+                                    </label>
+                                  
+                                    <input class="form-control tr" id="tbn-Passportexpirydate"  onchange="PassportexpirydateChange(this),ExpDate(this)" type="date" style="height: 35px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}
+</div>
+<ul class="pager">
+    <li class="previous"><a class="btn btn-inverse left" href="/Default/index/2"><span class="glyphicon glyphicon-menu-left"></span>Step 2</a></li>
+    <li class="next"><a class="btn btn-inverse right col-md-pull-2" href="/Default/index/3">Step 3 <span class="glyphicon glyphicon-menu-right"></span></a></li>
+</ul>
+
+
+
+
+
+
+
+    <div id="myNext3" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Warring</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Please make sure and confirm [hungas] is your full name as shown in your passport. An incomplete full name in the visa approval letter will be considered invalid.</p>
+                    <div class="form-group">
+                        <div class="radio" data-toggle="collapse" data-target="#oktbao">
+                            <label>
+                                <input type="radio" name="yes" value="optionok">
+                                Yes. It is the full name shown in my passport
+                            </label>
+                        </div>
+                        <div class="radio" onclick="radioHide(this)">
+                            <label>
+                                <input type="radio" name="yes" value="optionok">
+                                No. I need to make some changes.
+                            </label>
+                        </div>
+                    </div>
+                    <div class="well-success collapse" id="oktbao" style="color: whitesmoke">
+                        We are pleased to arrange Vietnam visa on arrival for Vietnam citizen.<br/> However, we would need you to provide us with some other details.<br/> Please click “SUBMIT” to send your request to us and our support team could assist you more!
+                    </div>
+                    
+                 </div>
+                <div class="modal-footer">
+                    <a class="btn btn-raised btn-danger" href="/Default/index/3">SUBMIT<span class="glyphicon glyphicon-ok"></span></a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="myPassportDate" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background: red">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title center-element" style="color: whitesmoke">Alert</h3>
+                </div>
+                <div class="modal-body">
+                    <p class="text-warning" style="font-size: 1.1em">Be kindly noted that boarding with less than 5-month valid passport might be rejected by your airlines. Would you like to continue with your visa application?".</p>
+                    <b id="sothang" class="text-center text-info">Number Months:&nbsp;</b>
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="sample1" value="ExitPass" id="rapassport" data-dismiss="modal">
+                                Yes. I want to continue.
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="sample1" value="ExitPass" checked="" id="rapassport1" data-dismiss="modal" >
+                                No. I want to renew my passport first.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function radioHide(a) {
+        $(a).click(function() {
+            $(".collapse").collapse('hide');
+        });
+    };
+
+    function rdtoggle(a) {
+        $(a).click(function() {
+            $(".collapse").collapse('toggle');
+        });
+    }
+</script>
+<script>
+   
+    $(document).ready(function() {
+        //$("#thongbao").hide();
+        //alert(localStorage.getItem("sokhag"));
+        setInterval(function () {
+            SaveData();
+
+        });
+    });
+</script>
+<script>
+    //function FullName(a) {
+    //    return $(a).text();
+    //}
+    function PassportexpirydateChange(a) {
+        var end = new Date($(a).val());
+        var begin = new Date();
+
+
+        if (GetNumberMonth(begin, end) <= 5) {
+            $("#myPassportDate").modal();
+            $("#sothang").text("Number Motnths: " + GetNumberMonth(begin, end) + "");
+        } else {
+
+            $("#myPassportDate").modal('hide');
+        }
+    }
+</script>
+<script>
+    //var k = 0;
+    //function SaveData() {
+    //    var s = "";
+    //    //var s = FullName(a);
+    //    $("#thongbao").text((k++) + s);
+    //}
+</script>

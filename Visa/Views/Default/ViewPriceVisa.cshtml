@@ -1,0 +1,275 @@
+﻿<div  style="background: white">
+    
+    <ul class="nav nav-pills">
+        <li class="active text-center" style="width: 50%"><a data-toggle="pill" href="#home">FOR TOURIST VISA</a></li>
+        <li class="text-center" style="width: 49%"><a data-toggle="pill" href="#menu1">FOR BUSINESS VISA</a></li>
+       
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="row">
+                <div class="col-md-2 hidden-xs center-element" style="background: royalblue; color: whitesmoke; height: auto">
+                    <h2 style="transform: rotate(90deg); font-size: 1.5em;" class="text-center "> SERVICE FEE</h2>
+                </div>
+                @*<div class="col-md-2 hidden-md hidden-lg hidden-print hidden-sm" style="background: royalblue; color: whitesmoke;">
+                <p style="font-size: 1.6em" class="text-center"> </p>
+            </div>*@
+                <div class="col-md-10" style="margin-left: -8px">
+                    <div class="table-responsive">
+                        <table class="table-hover table table-bordered container-fluid">
+                            <thead style="background: royalblue; color: whitesmoke;">
+
+
+                                <tr class="center-text">
+
+                                    <td colspan="12" class="text-center">
+                                        <div class="center-element">
+                                            <h5 class="normalCase">NORMAL CASE</h5>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr style="background: royalblue; color: whitesmoke">
+                                    <td colspan="2" class="td04">Type Of Visa</td>
+                                    <td colspan="2" class="td14">Type Of Visa</td>
+                                    <td colspan="2" class="td24">Type Of Visa</td>
+                                    <td colspan="2" class="td34">Type Of Visa</td>
+                                    <td colspan="2" class="td44">Type Of Visa</td>
+
+                                    <td colspan="2" class="td54">STAMPING FEE</td>
+                                    <td id="idtd03" class="hide"></td>
+                                </tr>
+                                @{
+                                    var g = ViewBag.Tourist as List<ViSaPart1>;
+
+
+                                    if (g != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var w in g)
+                                        {
+                                            var t1 = w.pax1;
+                                            var t2 = w.pax2;
+                                            var t3 = w.pax3;
+                                            var t4 = w.pax4;
+                                            if (t1 > 0 && t2 > 0 && t3 > 0 && t4 > 0)
+                                            {
+                                                <tr class="trTOURIST">
+                                                    <td colspan="2" rowspan="1" class="td01">@w.typeOfVisa</td>
+                                                    <td colspan="2" rowspan="1" class="td11">@t1&nbsp;USD</td>
+                                                    <td colspan="2" rowspan="1" class="td21">@t2&nbsp;USD</td>
+                                                    <td colspan="2" rowspan="1" class="td31">@t3&nbsp;USD</td>
+                                                    <td colspan="2" rowspan="1" class="td41">@t4&nbsp;USD</td>
+
+
+                                                    <td colspan="2" rowspan="1" class="td51">@w.valueP&nbsp;USD</td>
+                                                    <td colspan="2" class="hidden tdid">@w.id&nbsp;$</td>
+                                                </tr>
+                                            }
+
+                                            if (t1 <= 0 && t2 <= 0 && t3 <= 0 && t4 <= 0)
+                                            {
+                                                <tr class="trTOURIST">
+                                                    <td colspan="2" class="td01">@w.typeOfVisa</td>
+                                                    <td colspan="10" class="text-center">N/A</td>
+
+
+                                                </tr>
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                    <div>
+                        @{
+                            var ga = ViewBag.feeT as List<Processingtime>;
+                            if (ga != null)
+                            {
+                                foreach (var w in ga)
+                                {
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading" style="background: royalblue; color: whitesmoke;">
+                                            <h2 class="panel-title text-center"><span>@w.name &nbsp;@w.noteName</span></h2>
+                                        </div>
+                                        <div class="panel-body text-center text-danger">
+                                            Plus  @w.value USD/pax
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <div class="row">
+                <div class="col-md-2 hidden-xs center-element" style="background: royalblue; color: whitesmoke; height: auto">
+                    <h2 style="transform: rotate(90deg); font-size: 1.4em;" class="text-center "> SERVICE FEE</h2>
+                </div>
+                @*<div class="col-md-2 hidden-md hidden-lg hidden-print hidden-sm" style="background: royalblue; color: whitesmoke;">
+                <p style="font-size: 1.6em" class="text-center"> STAMPING FEE</p>
+            </div>*@
+                <div class="col-md-10" style="margin-left: -8px">
+                    <div class="table-responsive">
+                        <table class="table-hover table table-bordered container-fluid">
+                            <thead style="background: royalblue; color: whitesmoke;">
+
+
+                                <tr class="center-text">
+
+                                    <td colspan="12" class="text-center">
+                                        <div class="center-element">
+                                            <h5 class="normalCase">NORMAL CASE</h5>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr style="background: royalblue; color: whitesmoke">
+                                    <td colspan="2" class="td04">Type Of Visa</td>
+                                    <td colspan="2" class="td14">Type Of Visa</td>
+                                    <td colspan="2" class="td24">Type Of Visa</td>
+                                    <td colspan="2" class="td34">Type Of Visa</td>
+                                    <td colspan="2" class="td44">Type Of Visa</td>
+
+                                    <td colspan="2" class="td54">STAMPING FEE</td>
+                                    <td id="idtd04" class="hide"></td>
+                                </tr>
+                                @{
+                                    var g1 = ViewBag.Busines as List<ViSaPart1>;
+
+
+                                    if (g1 != null)
+                                    {
+                                        int i = 0;
+                                        foreach (var w in g1)
+                                        {
+                                            var t1 = w.pax1;
+                                            var t2 = w.pax2;
+                                            var t3 = w.pax3;
+                                            var t4 = w.pax4;
+                                            if (t1 > 0 && t2 > 0 && t3 > 0 && t4 > 0)
+                                            {
+                                                <tr class="trTOURIST">
+                                                    <td colspan="2" rowspan="1" class="td01">@w.typeOfVisa</td>
+                                                    <td colspan="2" rowspan="1" class="td11">@t1&nbsp;USD</td>
+                                                    <td colspan="2" rowspan="1" class="td21">@t2&nbsp;USD</td>
+                                                    <td colspan="2" rowspan="1" class="td31">@t3&nbsp;USD</td>
+                                                    <td colspan="2" rowspan="1" class="td41">@t4&nbsp;USD</td>
+
+
+                                                    <td colspan="2" rowspan="1" class="td51">@w.valueP&nbsp;USD</td>
+                                                    <td colspan="2" class="hidden tdid">@w.id&nbsp;$</td>
+                                                </tr>
+                                            }
+
+                                            if (t1 <= 0 && t2 <= 0 && t3 <= 0 && t4 <= 0)
+                                            {
+                                                <tr class="trTOURIST">
+                                                    <td colspan="2" class="td01">@w.typeOfVisa</td>
+                                                    <td colspan="10" class="text-center">N/A</td>
+
+
+                                                </tr>
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+                    <div>
+                        @{
+                            var ga1 = ViewBag.feeB as List<Processingtime>;
+                            if (ga1 != null)
+                            {
+                                foreach (var w in ga1)
+                                {
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading" style="background: royalblue; color: whitesmoke;">
+                                            <h2 class="panel-title"><span>@w.name &nbsp;@w.noteName</span></h2>
+                                        </div>
+                                        <div class="panel-body text-center text-danger">
+                                            Plus  @w.value USD/pax
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        }
+
+                    </div>
+                    @*<div class="row">
+                <div class="col-md-4 center-element" style="background: royalblue; color: whitesmoke"><h4 class="text-center">STAMPING FEE</h4></div>
+                @{
+                    foreach (var w in g)
+                    {
+                        if (w.valueP > 0)
+                        { <div class="col-md-2 col-xs-2 col-sm-2"><h4 class="active">@w.valueP</h4></div>}
+
+                    }
+                }
+            </div>*@
+                </div>
+
+            </div>
+
+        </div>
+       
+    </div>
+</div>
+<script >
+    
+    $(document)
+        .ready(function() {
+          
+            loadHeading();
+
+        })
+</script>
+<script>
+    function loadHeading() {
+    
+        var url = '@Url.Action("LoadHeading", "Default")';
+        $.ajax({
+            url: url,
+            datatype: "JSON",
+            type: "POST",
+            success: function(data) {
+               
+                $(".td04").text(data.name);
+                $(".td14").text(data.pax1);
+                $(".td24").text(data.pax2);
+                $(".td34").text(data.pax3);
+                $(".td44").text(data.pax4);
+                $(".idtd03").text(data.id);
+            }
+        })
+    }
+</script>

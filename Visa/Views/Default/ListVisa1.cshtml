@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Visa.ViSaPart1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.typeOfVisa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pax1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pax2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pax3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pax4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.visit)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.typeOfVisa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pax1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pax2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pax3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pax4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.visit)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

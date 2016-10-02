@@ -1,0 +1,260 @@
+﻿
+@{
+    ViewBag.Title = "Nhap";
+    Layout = "~/Views/Shared/Default.cshtml";
+}
+
+<h2>Nhap</h2>
+
+<div class="col-md-6 ">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Visa information</h3>
+        </div>
+        <div class="panel-body" style="color: black">
+            <div class="breadcrumb row center-element" style="margin-top: -15px">
+                <h6 class="col-md-4 ">Number of visa</h6>
+                <h6 class="col-md-8 text-right">3 Applicant x $125</h6>
+            </div>
+            <div class="breadcrumb row" style="margin-top: -10px">
+                <h6 class="col-md-4 left">Type of visa</h6>
+                <h6 class="col-md-8 text-right">1 month single <br/> 30-day stay, only 1 time entry/exit</h6>
+
+            </div>
+            <div class="breadcrumb row center-element" style="margin-top: -10px">
+                <h6 class="col-md-4 ">Purpose of visit</h6>
+                <h6 class="col-md-8 text-right">Busines</h6>
+            </div>
+            <div class="breadcrumb row" style="margin-top: -10px">
+                <h6 class="col-md-4 left">Processing time</h6>
+                <h6 class="col-md-8 text-right"><span>3 x $47</span> <br/> Emergency (From 30 minutes to 1 working hour )</h6>
+
+            </div>
+
+            <div class="breadcrumb row center-element" style="margin-top: -10px">
+                <h6 class="col-md-4 ">Purpose of visit</h6>
+                <h6 class="col-md-8 text-right">Busines</h6>
+            </div>
+            <div class="breadcrumb  active row" style="margin-top: -10px">
+                <h6 class="col-md-4 left">Extra Services</h6>
+                <h6 class="col-md-8 text-right"><span>Airport fast-track service(3 x $18)</span> <br/> Car pick up(7 seats)($25)</h6>
+
+            </div>
+            <div class="breadcrumb row center-element" style="margin-top: -10px">
+                <h6 class="col-md-4 ">Total service fee</h6>
+                <h6 class="col-md-8 text-right text-danger" style="font-size: 1.01em">$268 </h6>
+            </div>
+        </div>
+        <ul class="nav nav-wizard form-horizontal center-element">
+            <li id="bt01" class="hidden" style="width: 120px">
+                <a href="#step1" id="btn01" onclick=" Steps(1) " class="hidden"> 1 Visa Options</a>
+            </li>
+            <li id="bt11" class="active" style="width: 180px">
+                <a href="#step1" id="btn11" onclick=" Steps(2) " class="btn-default"> 2 Applicant Detail</a>
+            </li>
+
+            <li id="bt21" class="hidden" style="width: 180px">
+                <a href="#step1" id="btn21" onclick=" Steps(2) " class="btn-default"> 2 Applicant Detail</a>
+            </li>
+
+
+
+        </ul>
+        <div class="panel-footer">
+            <i class="text-danger">
+
+                Excluding Stamping fee, paid directly to Immigration counter at airport
+            </i>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12" id="thangchuan">
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <label class="">Date of arrival </label>
+                        <input class="form-control" type="date" id="dater" min="2016-08-26" style="margin-top: -32px" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="">Date of exit </label>
+                        <input class="form-control" id="dater1" onclick="test(this)" type="date" style="margin-top: -32px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" id="thangtuychon" style="margin-top: -20px">
+            <h5 class="text-danger">Date of arrival</h5>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div style="margin-top: -40px">
+                        @{
+                            int k = 0;
+                            var cars = "January,February,March,	April,May,June,July,August,September,October,November,December".Split(',');
+                            var tg = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+                            <select class="form-control  text-info btn-default" id="numberMonth" onchange="selectedptions()" style="height: 35px">
+                                <option value="" disabled="disabled" selected="selected" class="text-danger">Choise month</option>
+                                @{
+
+                                    foreach (var w in cars)
+                                    {
+                                        <option value=@tg[k++]>@w </option>
+
+                                    }
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div style="margin-top: -40px">
+                        @{
+                            var nam = 1;
+                            <select class="form-control  text-info btn-default" id="numberYear" style="height: 35px" onchange=" selectedptions() ">
+                                <option value="" disabled="disabled" selected="selected" class="text-danger">Choise year</option>
+                                @{
+                                    for (int i = DateTime.Today.Year + 4; i >= DateTime.Today.Year - 1; i--)
+                                    {
+                                        <option value=@i>Year @i </option>
+                                        nam = i;
+                                    }
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div style="margin-top: -40px">
+                        @{
+
+                            <select class="form-control  text-info btn-default" id="numberDay" style="height: 35px">
+                                <option value="" disabled="disabled" selected="selected" class="text-danger">Choise Date</option>
+                                @*@{
+
+                                        for (int i = DateTime.DaysInMonth(2016,4); i >= 1; i--)
+                                        {
+                                            <option value=@i>Day @i </option>
+                                        }
+                                    }*@
+                            </select>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12" id="thangtuychon1" style="margin-top: -20px">
+            <h5 class="text-danger">Date of exit</h5>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div style="margin-top: -40px">
+                        @{
+                            int k1 = 0;
+                            //var cars1 = "January,February,March,	April,May,June,July,August,September,October,November,December".Split(',');
+                            //var tg1 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+                            <select class="form-control  text-info btn-default" id="numberMonth1" onchange="selectedptions()" style="height: 35px">
+                                <option value="" disabled="disabled" selected="selected" class="text-danger">Choise month</option>
+                                @{
+
+                                    foreach (var w in cars)
+                                    {
+                                        <option value=@tg[k1++]>@w </option>
+
+                                    }
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div style="margin-top: -40px">
+                        @{
+
+                            <select class="form-control  text-info btn-default" id="numberYear1" style="height: 35px" onchange=" selectedptions() ">
+                                <option value="" disabled="disabled" selected="selected" class="text-danger">Choise year</option>
+                                @{
+                                    for (int i = DateTime.Today.Year + 4; i >= DateTime.Today.Year - 1; i--)
+                                    {
+                                        <option value=@i>Year @i </option>
+                                        nam = i;
+                                    }
+                                }
+                            </select>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div style="margin-top: -40px">
+                        @{
+
+                            <select class="form-control  text-info btn-default" id="numberDay1" style="height: 35px">
+                                <option value="" disabled="disabled" selected="selected" class="text-danger">Choise Date</option>
+                                @*@{
+
+                                        for (int i = DateTime.DaysInMonth(2016,4); i >= 1; i--)
+                                        {
+                                            <option value=@i>Day @i </option>
+                                        }
+                                    }*@
+                            </select>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-12">
+    <h4>Contact information</h4>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group label-floating" style="margin-top: -2px">
+                    <label class="control-label" for="btn_fullname">Full Name</label>
+                    <input class="form-control" id="btn_fullname" style="height: 35px" required="" type="text">
+                </div>
+                <div class="form-group label-floating" style="margin-top: -2px">
+                    <label class="control-label" for="btn_email">Contact email</label>
+                    <input class="form-control" id="btn_email" style="height: 35px" type="email">
+                </div>
+                <div class="form-group label-floating" style="margin-top: -2px">
+                    <label class="control-label" for="btn_emailRe" style="height: 35px">Re-email*</label>
+                    <input class="form-control" id="btn_emailRe" type="email">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group label-floating" style="margin-top: -2px">
+                    <label class="control-label" for="btn_Address">Address*</label>
+                    <input class="form-control" id="btn_Address" style="height: 35px" required="" type="text">
+                </div>
+                <div class="form-group label-floating" style="margin-top: -2px">
+                    <label class="control-label" for="btn_phone">Contact phone </label>
+                    <input class="form-control" id="btn_phone" style="height: 35px" type="tel">
+                </div>
+
+            </div>
+            <ul class="nav nav-wizard form-horizontal center-element">
+                <li id="bt02" class="hidden" style="width: 120px">
+                    <a href="#step1" id="btn02" onclick="Steps(1)" class="hidden"> 1 Visa Options</a>
+                </li>
+                <li id="bt12" class="active">
+                    <a href="#step1" id="btn12" onclick="Steps(3)" class="btn-default">3 Review & Payment</a>
+                </li>
+
+                <li id="bt22" class="hidden" style="width: 180px">
+                    <a href="#step1" id="btn22" onclick="Steps(2)" class="btn-default">3 Review & Payment</a>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>

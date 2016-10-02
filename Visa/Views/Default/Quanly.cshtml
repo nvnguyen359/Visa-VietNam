@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Hệ Thống Quản Lý";
+    Layout = "~/Views/Shared/Default.cshtml";
+}
+@*@Html.Partial("Admin")*@
+@{
+
+    if (ViewBag.taikhoan == null)
+    {
+        <p>ban chua dang nhap</p>
+        @Html.Partial("Login")
+    }
+    else
+    {
+        @Html.Partial("Admin")
+        <p>
+            ban da dang nhap
+        </p>
+    }
+}
+
+
+

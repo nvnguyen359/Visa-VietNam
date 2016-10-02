@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VISA" Class="VisaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=203.162.76.195,1433;Initial Catalog=VISA;User ID=duan" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="VISAConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ViSaPart1" Member="ViSaPart1s">
+    <Type Name="ViSaPart1">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typeOfVisa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pax1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pax2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pax3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pax4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="number" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="visit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="proTime" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noteName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="valueP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pax5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AIRPORTFASTRACK" Member="AIRPORTFASTRACKs">
+    <Type Name="AIRPORTFASTRACK">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="soGhe" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sanBay" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="donGia1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="donGia2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="donVi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="air" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.APPLYCODE" Member="APPLYCODEs">
+    <Type Name="APPLYCODE">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="value" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valuePercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tu" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="den" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BGIAVISA1" Member="BGIAVISA1s">
+    <Type Name="BGIAVISA1">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typeOfVisa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="kyhieu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="minpax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="maxpax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="donGia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ndungpax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BGIAVISA2" Member="BGIAVISA2s">
+    <Type Name="BGIAVISA2">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="proTime" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DgiaPlus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ghiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BGIAVISA3" Member="BGIAVISA3s">
+    <Type Name="BGIAVISA3">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dGia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ghiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BGVISA" Member="BGVISAs">
+    <Type Name="BGVISA">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="mdich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichumdich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="loaiVisa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="kyhieuVisa" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ghichuLvisa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="khachMin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="khachMax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="donGia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="thoiGianxuLy" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghiChuxuly" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dongdauThiThuc" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ghiChuthiThuc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="donviTien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="quocTich" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="giaQtbinhthuong" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="giaQtdacbiet" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="lyDoQt" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CARPICKUP" Member="CARPICKUPs">
+    <Type Name="CARPICKUP">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="choNgoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sanBay" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="khachMin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="khachMax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dientakhach" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="donGia" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dichVudon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichudvDon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dvTien" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHIPHI" Member="CHIPHIs">
+    <Type Name="CHIPHI">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idtrDoan" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="tenChiPhi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="dongia" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DichVu" Member="DichVus">
+    <Type Name="DichVu">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FEEVISA" Member="FEEVISAs">
+    <Type Name="FEEVISA">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="serviceFee" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="typeofVisa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="namePax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="vist" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="minPax" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="maxPax" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="value" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dv" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="specal" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Gender" Member="Genders">
+    <Type Name="Gender">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HEADING" Member="HEADINGs">
+    <Type Name="HEADING">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="pax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="idpax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HeadingPax" Member="HeadingPaxes">
+    <Type Name="HeadingPax">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pax1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pax2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pax3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="pax4" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nationality" Member="Nationalities">
+    <Type Name="Nationality">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="stt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="value" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="groups" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHATKY" Member="NHATKies">
+    <Type Name="NHATKY">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idtrdoan" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="idChiphi" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="khacXem" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="pice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="donhang" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhomAirportFast" Member="NhomAirportFasts">
+    <Type Name="NhomAirportFast">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="header" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhom" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NOTE" Member="NOTEs">
+    <Type Name="NOTE">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="note" Member="note1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PayMember" Member="PayMembers">
+    <Type Name="PayMember">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idtv" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIDICHVU" Member="PHIDICHVUs">
+    <Type Name="PHIDICHVU">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="purposeofvisit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Pice" Member="Pices">
+    <Type Name="Pice">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenDichVu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IdDichVu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="paxSing" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="paxMin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="paxMax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenPhidv" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ChuThich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Processingtime" Member="Processingtimes">
+    <Type Name="Processingtime">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[ Purposeofvisit]" Member="_Purposeofvisit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noteName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.QUOCTICH" Member="QUOCTICHes">
+    <Type Name="QUOCTICH">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="groups" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Table]" Member="Tables">
+    <Type Name="Table">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[ Purposeofvisit]" Member="_Purposeofvisit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAIKHOAN" Member="TAIKHOANs">
+    <Type Name="TAIKHOAN">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NChar(90)" CanBeNull="true" />
+      <Column Name="pass" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChucDanh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Finger" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="qtruycap" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="chucvu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="auto" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="remember" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TArrivalPort" Member="TArrivalPorts">
+    <Type Name="TArrivalPort">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="value" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valuetext" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TGiaPhong" Member="TGiaPhongs">
+    <Type Name="TGiaPhong">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="den" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="donvitien" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.THANHVIEN" Member="THANHVIENs">
+    <Type Name="THANHVIEN">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idTrDoan" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="nationality" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fullName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="pateOfBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="passPortNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="passportexpireddate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="pay1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pay2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pay3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.THotel" Member="THotels">
+    <Type Name="THotel">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenksan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="avartar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tenphong" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="den" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="dvi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="sing" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TLocaltion" Member="TLocaltions">
+    <Type Name="TLocaltion">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="imageDai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TNumberofapplicant" Member="TNumberofapplicants">
+    <Type Name="TNumberofapplicant">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nametruoc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="namesau" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="dieukien" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="batdau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ketthuc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="valuenumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="valuetext" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="group1" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TPurposeofvisia" Member="TPurposeofvisias">
+    <Type Name="TPurposeofvisia">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="valuenumber" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valuetext" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRomtype" Member="TRomtypes">
+    <Type Name="TRomtype">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tenksan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="avartar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tenphong" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="den" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="dvi" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="sing" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRUONDOAN" Member="TRUONDOANs">
+    <Type Name="TRUONDOAN">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numberofapplicant" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="valueOfapplicant" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="purposeofvisit" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="typeofvisa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="valueTypeofvisa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fromdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="exitdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="arrivalPort" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="processingtime" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="contactname" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fullname" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="payMember" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="notePay" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="invoice" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="fastTrack" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="carPick" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hotel" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="romtype" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="valueProTime" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valueFast" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="valueCar" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="privateVisa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="valuePrivate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TTypeofvisa" Member="TTypeofvisas">
+    <Type Name="TTypeofvisa">
+      <Column Name="id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="valueText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[values]" Member="values" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="value" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
